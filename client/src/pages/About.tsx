@@ -1,67 +1,34 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { pageGraph, SITE } from "@/lib/schema";
 import aboutBannerImage from "@assets/fripse about_1755483059665.png";
 import dustinPhoto from "@assets/Dustin RE Headshot_1755547418259.jpg";
 
 export default function About() {
-
-  // Update page title and add schema markup for SEO
-  useEffect(() => {
-    document.title = "About Fripse AI - Utah AI Consulting for Small Business";
-    
-    // Update meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', "Fripse AI is a human-led consulting company helping small businesses in home services, professional services, and field-based industries streamline operations with custom AI solutions.");
-    }
-
-    // Add JSON-LD schema markup for the About page
-    const existingSchema = document.querySelector('#about-page-schema');
-    if (existingSchema) {
-      existingSchema.remove();
-    }
-
-    const schemaScript = document.createElement('script');
-    schemaScript.id = 'about-page-schema';
-    schemaScript.type = 'application/ld+json';
-    schemaScript.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Fripse AI",
-      "description": "AI consulting and automation services for small businesses in Utah",
-      "url": "https://fripse.com/about",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Salt Lake City",
-        "addressRegion": "UT",
-        "addressCountry": "US"
-      },
-      "areaServed": ["Utah", "Salt Lake City", "Professional Services", "Home Services"],
-      "serviceType": ["AI Consulting", "Business Automation", "AI Implementation", "Workflow Design"],
-      "founder": {
-        "@type": "Person",
-        "name": "Dustin Crump"
-      },
-      "sameAs": [
-        "https://foundforai.com"
-      ]
-    });
-    document.head.appendChild(schemaScript);
-
-    return () => {
-      const schema = document.querySelector('#about-page-schema');
-      if (schema) {
-        schema.remove();
-      }
-    };
-  }, []);
+  const aboutDescription =
+    "Fripse AI is a human-led consulting company helping small businesses in home services, professional services, and field-based industries streamline operations with custom AI solutions.";
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Seo
+        title="About Fripse AI - Utah AI Consulting for Small Business"
+        description={aboutDescription}
+        path="/about"
+        jsonLd={pageGraph({
+          url: `${SITE}/about`,
+          name: "About Fripse AI - Utah AI Consulting for Small Business",
+          description: aboutDescription,
+          breadcrumbs: [
+            { name: "Home", url: `${SITE}/` },
+            { name: "About", url: `${SITE}/about` },
+          ],
+        })}
+      />
       <Navbar activeSection="about" />
       
       {/* Hero Banner */}

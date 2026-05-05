@@ -1,20 +1,29 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { pageGraph, SITE } from "@/lib/schema";
 
 export default function Booking() {
-  // Update page title and meta description for SEO
-  useEffect(() => {
-    document.title = "Book a Free AI Strategy Call - Fripse AI";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', "Book your free 30-minute AI strategy call with Fripse AI. We'll identify your biggest time drain and show you how to automate it with no pressure and no tech jargon.");
-    }
-  }, []);
+  const description =
+    "Book your free 30-minute AI strategy call with Fripse AI. We'll identify your biggest time drain and show you how to automate it — no pressure, no tech jargon.";
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Seo
+        title="Book a Free AI Strategy Call — Fripse AI"
+        description={description}
+        path="/book"
+        jsonLd={pageGraph({
+          url: `${SITE}/book`,
+          name: "Book a Free AI Strategy Call — Fripse AI",
+          description,
+          breadcrumbs: [
+            { name: "Home", url: `${SITE}/` },
+            { name: "Book a call", url: `${SITE}/book` },
+          ],
+        })}
+      />
       <Navbar activeSection="booking" />
       
       <div className="pt-32 pb-20">

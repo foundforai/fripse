@@ -9,6 +9,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
 import { submitToFormspree } from "@/lib/formspree";
+import Seo from "@/components/Seo";
+import { pageGraph, SITE } from "@/lib/schema";
 
 interface Question {
   id: number;
@@ -356,8 +358,23 @@ const Quiz: React.FC = () => {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="AI Readiness Quiz | Fripse AI"
+        description="Take the 5-question Fripse AI Readiness Quiz to see where AI can save your business the most time."
+        path="/quiz"
+        jsonLd={pageGraph({
+          url: `${SITE}/quiz`,
+          name: "AI Readiness Quiz | Fripse AI",
+          description:
+            "Take the 5-question Fripse AI Readiness Quiz to see where AI can save your business the most time.",
+          breadcrumbs: [
+            { name: "Home", url: `${SITE}/` },
+            { name: "Quiz", url: `${SITE}/quiz` },
+          ],
+        })}
+      />
       <Navbar activeSection="" />
-      
+
       <section className="pt-32 pb-16">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">

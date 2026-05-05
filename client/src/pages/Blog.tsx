@@ -5,6 +5,8 @@ import { CalendarDays, User, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { pageGraph, SITE } from "@/lib/schema";
 
 // Function to get contextual card image based on blog content
 const getCardImageUrl = (title: string, content: string): string => {
@@ -38,8 +40,42 @@ const Blog: React.FC = () => {
   const [activeSection] = useState("");
   const posts = blogPosts;
 
+  const description =
+    "Insights, trends, and practical advice on AI transformation, GEO, and small-business AI strategy from Fripse AI.";
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <Seo
+        title="Fripse AI Blog — AI strategy for small business"
+        description={description}
+        path="/blog"
+        jsonLd={pageGraph({
+          url: `${SITE}/blog`,
+          name: "Fripse AI Blog",
+          description,
+          breadcrumbs: [
+            { name: "Home", url: `${SITE}/` },
+            { name: "Blog", url: `${SITE}/blog` },
+          ],
+          extras: [
+            {
+              "@type": "Blog",
+              "@id": `${SITE}/blog#blog`,
+              url: `${SITE}/blog`,
+              name: "Fripse AI Blog",
+              description,
+              publisher: { "@id": `${SITE}/#org` },
+              blogPost: posts.map((p) => ({
+                "@type": "BlogPosting",
+                "@id": `${SITE}/blog/${p.slug}#article`,
+                headline: p.title,
+                url: `${SITE}/blog/${p.slug}`,
+                datePublished: p.publishedAt,
+              })),
+            },
+          ],
+        })}
+      />
       <Navbar activeSection={activeSection} />
       {/* Full-width AI banner image */}
       <div className="w-full h-64 md:h-80 lg:h-96 overflow-hidden relative mt-28">

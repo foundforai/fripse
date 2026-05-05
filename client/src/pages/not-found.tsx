@@ -2,10 +2,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, Home } from "lucide-react";
 import { Link } from "wouter";
+import Seo from "@/components/Seo";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+      <Seo
+        title="Page Not Found | Fripse AI"
+        description="The page you're looking for doesn't exist."
+        path="/404"
+        noindex
+      />
       <Card className="w-full max-w-lg mx-4">
         <CardContent className="pt-6 text-center">
           <div className="flex justify-center mb-4">

@@ -3,10 +3,30 @@ import { Button } from "@/components/ui/button";
 import { Clock, Target, Check, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { pageGraph, serviceNode, SITE } from "@/lib/schema";
 
 const Assessment: React.FC = () => {
+  const description =
+    "How the Fripse AI Business Assessment works: workflow mapping, quick wins, and a custom AI playbook for small teams in Utah.";
+
   return (
     <div className="min-h-screen">
+      <Seo
+        title="AI Business Assessment | Fripse AI"
+        description={description}
+        path="/assessment"
+        jsonLd={pageGraph({
+          url: `${SITE}/assessment`,
+          name: "AI Business Assessment | Fripse AI",
+          description,
+          breadcrumbs: [
+            { name: "Home", url: `${SITE}/` },
+            { name: "Assessment", url: `${SITE}/assessment` },
+          ],
+          extras: [serviceNode()],
+        })}
+      />
       <Navbar activeSection="" />
       
       {/* Hero Section */}

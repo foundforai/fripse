@@ -1,8 +1,15 @@
 import LeadCaptureForm from "@/components/LeadCaptureForm";
+import Seo from "@/components/Seo";
 
 export default function LeadCaptureDemo() {
   return (
     <div className="min-h-screen bg-gray-50 py-16">
+      <Seo
+        title="Lead Capture Demo | Fripse AI"
+        description="Internal demo page."
+        path="/lead-capture-demo"
+        noindex
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams, Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { blogPostGraph } from "@/lib/schema";
 
 // Function to get contextual Unsplash image based on blog content
 const getBannerImageUrl = (title: string, content: string): string => {
@@ -39,90 +41,6 @@ const BlogPostPage: React.FC = () => {
   const [activeSection] = useState("");
   const post = slug ? getBlogPostBySlug(slug) : undefined;
 
-  useEffect(() => {
-    if (!post) return;
-
-    document.title = `${post.title} | Fripse AI - Utah AI Consulting`;
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', post.excerpt);
-    }
-
-    const existingSchema = document.querySelector('#blog-post-schema');
-    if (existingSchema) {
-      existingSchema.remove();
-    }
-
-    const schemaScript = document.createElement('script');
-    schemaScript.id = 'blog-post-schema';
-    schemaScript.type = 'application/ld+json';
-
-    let keywords = "AI consulting, business automation, artificial intelligence";
-    const t = post.title.toLowerCase();
-    if (t.includes("emotional intelligence")) {
-      keywords = "AI emotional intelligence, GPT-4 EQ, emotionally aware AI, business AI adoption, Fripse AI";
-    } else if (t.includes("meta") && t.includes("advertising")) {
-      keywords = "Meta AI advertising, automated ad campaigns, AI marketing, Facebook ads automation, digital advertising AI";
-    } else if (t.includes("perplexity")) {
-      keywords = "Perplexity AI, small business AI strategy, custom AI tools, business automation, AI adoption, internal AI systems";
-    } else if (t.includes("seo") && t.includes("ai")) {
-      keywords = "AI SEO optimization, schema markup, structured data, AI-first search, Google AI overviews, search engine optimization";
-    } else if (t.includes("prepare your website") && t.includes("ai search")) {
-      keywords = "AI search optimization, website AI readiness, ChatGPT search, Perplexity discovery, AI visibility, machine readability";
-    }
-
-    const schemaData: any = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "alternativeHeadline": post.excerpt,
-      "description": post.excerpt,
-      "author": {
-        "@type": "Organization",
-        "name": "Fripse AI",
-        "url": "https://fripse.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Fripse AI",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://fripse.com/logo.png"
-        }
-      },
-      "datePublished": post.publishedAt,
-      "dateModified": post.updatedAt,
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `https://fripse.com/blog/${post.slug}`
-      },
-      "articleSection": "AI Consulting",
-      "keywords": keywords
-    };
-
-    if (post.slug === "how-to-prepare-website-age-ai-search") {
-      schemaData.mentions = {
-        "@type": "Organization",
-        "name": "Found For AI",
-        "url": "https://foundforai.com"
-      };
-    }
-
-    schemaScript.textContent = JSON.stringify(schemaData);
-    document.head.appendChild(schemaScript);
-
-    return () => {
-      document.title = "Fripse AI - Utah AI Consulting for Professional & Service Businesses";
-      const md = document.querySelector('meta[name="description"]');
-      if (md) {
-        md.setAttribute('content', "Utah's premier AI consulting for professional services, home service companies & small businesses. Transform operations with AI automation in Salt Lake City area.");
-      }
-      const s = document.querySelector('#blog-post-schema');
-      if (s) s.remove();
-    };
-  }, [post]);
-
   if (!post) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -144,6 +62,13 @@ const BlogPostPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Seo
+        title={`${post.title} | Fripse AI`}
+        description={post.excerpt}
+        path={`/blog/${post.slug}`}
+        ogType="article"
+        jsonLd={blogPostGraph(post)}
+      />
       <Navbar activeSection={activeSection} />
       {/* Full-width banner image */}
       <div className="w-full h-64 md:h-80 lg:h-96 overflow-hidden relative mt-28">

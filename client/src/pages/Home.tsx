@@ -3,12 +3,20 @@ import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Clock, Target, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { homepageGraph } from "@/lib/schema";
 
 const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
+      <Seo
+        title="AI Business Assessment for Utah Small Businesses | Fripse AI"
+        description="Not sure how AI fits your business? Start with an AI Business Assessment that maps where AI saves time and makes money in your workflows."
+        path="/"
+        jsonLd={homepageGraph()}
+      />
       <Navbar activeSection="" />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="container-custom">

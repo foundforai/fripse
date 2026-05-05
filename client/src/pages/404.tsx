@@ -1,23 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 
 export default function NotFoundPage() {
-  // Update page title for SEO
-  useEffect(() => {
-    document.title = "404 - Page Not Found | Fripse AI";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', "The page you're looking for doesn't exist. Return to Fripse AI homepage for AI consulting services in Utah.");
-    }
-  }, []);
-
   return (
     <div className="min-h-screen bg-gray-50">
+      <Seo
+        title="404 - Page Not Found | Fripse AI"
+        description="The page you're looking for doesn't exist. Return to Fripse AI homepage for AI consulting services in Utah."
+        path="/404"
+        noindex
+      />
       <Navbar activeSection="404" />
       
       <div className="pt-24 pb-20">

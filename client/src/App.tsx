@@ -1,8 +1,7 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router as WouterRouter } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
-import { HelmetProvider } from "react-helmet-async";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import NotFoundPage from "@/pages/404";
@@ -17,7 +16,7 @@ import Booking from "@/pages/Booking";
 import LeadCaptureDemo from "@/pages/LeadCaptureDemo";
 import SmsOptIn from "@/pages/SmsOptIn";
 
-function Router() {
+function Routes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -37,17 +36,26 @@ function Router() {
   );
 }
 
-function App() {
-  return (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
-  );
+interface AppProps {
+  ssrPath?: string;
 }
 
-export default App;
+export default function App({ ssrPath }: AppProps = {}) {
+  const tree = (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Routes />
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+
+  if (ssrPath) {
+    const staticHook = (): [string, (to: string) => void] => [
+      ssrPath,
+      () => {},
+    ];
+    return <WouterRouter hook={staticHook}>{tree}</WouterRouter>;
+  }
+  return tree;
+}

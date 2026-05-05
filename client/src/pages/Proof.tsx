@@ -3,10 +3,29 @@ import { Button } from "@/components/ui/button";
 import { Star, ArrowRight, Clock, DollarSign, Users, TrendingUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
+import { pageGraph, SITE } from "@/lib/schema";
 
 const Proof: React.FC = () => {
+  const description =
+    "Real outcomes from Fripse AI engagements: hours saved, revenue gained, and the workflow changes that made it happen.";
+
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Proof — Real Results from Fripse AI Clients"
+        description={description}
+        path="/proof"
+        jsonLd={pageGraph({
+          url: `${SITE}/proof`,
+          name: "Proof — Real Results from Fripse AI Clients",
+          description,
+          breadcrumbs: [
+            { name: "Home", url: `${SITE}/` },
+            { name: "Proof", url: `${SITE}/proof` },
+          ],
+        })}
+      />
       <Navbar activeSection="proof" />
       
       {/* Hero Section */}
