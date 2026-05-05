@@ -1,0 +1,16 @@
+User-agent: *
+Disallow: /author/
+Disallow: /tag/
+Disallow: /category/
+Disallow: /2014/
+Disallow: /oneplus-purple-6t/
+Disallow: /telegram-scrapping-ico/
+Disallow: /intel-pc-vs-mac-comparison-website-biased/
+Disallow: /motorola-desktop-mode-android-11/
+Disallow: /three-new-moto-smartwatches-launching-2021/
+Disallow: /motorola-nio-snapdragon-865-dual-selfie-camera/
+Disallow: /samsung-uv-sterilizer-wireless-charger-review/
+Disallow: /this-online-tool-zoom-escaper-lets-you-sabotage-own-zoom-calls-background-noise/
+Disallow: /termsOfService
+
+Sitemap: https://www.fripse.com/sitemap.xml

@@ -1,0 +1,83 @@
+You are rebuilding my homepage and nav to position Fripse AI as an assessment first consulting practice, not a package seller. Use clean semantic HTML, mobile first CSS, and minimal JS. Keep it fast, accessible, and SEO friendly. Do not include hero carousels. Remove pricing tables entirely.
+Goals
+Single primary CTA, Book an AI Business Assessment
+Clarify two paid entry points, 2 Hour Checkup and 1 Day Deep Dive
+Emphasize local credibility, clear proof, and simple next steps
+Keep fripse.com/book as the booking link
+Keep a secondary lead magnet, an AI Readiness Quiz, for visitors not ready to book
+Global
+• Update nav to Home, Assessment, Proof, About, Blog, Book
+• Primary CTA button in nav, Book Assessment, link to https,slash,slash,fripse,dot,com,slash,book
+• Footer, include service area copy for Salt Lake Valley cities, privacy, terms, contact
+• Remove Quick Win Day, Ops Overhaul, AI Co Pilot from all pages
+Homepage structure and copy
+Hero
+Heading, Not sure how AI fits your business
+Subheading, Start with an AI Business Assessment that maps where AI saves time and makes money in your workflows
+Primary button, Book Assessment
+Secondary link, Take the 5 minute AI Readiness Quiz
+Section, How it works
+Step 1, Assessment
+Body, Choose a 2 Hour Checkup or a 1 Day Deep Dive. We interview your team, review processes, and identify 3 to 10 high impact opportunities
+Step 2, Roadmap and Training
+Body, You receive a practical playbook with exact prompts, workflows, and roles. We train your staff so it sticks
+Step 3, Implementation
+Body, If you want help, we implement the highest ROI items and track results
+Section, Offers
+Card 1 title, 2 Hour AI Business Checkup
+Body, A fast audit for owners and small teams. You leave with 3 to 5 concrete ways to save time or increase revenue
+Button, Book the 2 Hour Checkup, link to fripse,slash,book
+Card 2 title, 1 Day AI Deep Dive
+Body, For teams of 5 to 15. We map workflows, find bottlenecks, and deliver a custom AI playbook your team can use immediately
+Button, Book the 1 Day Deep Dive, link to fripse,slash,book
+Section, Proof
+Mini heading, Recent client wins
+Bullet, Flooring company reduced texting chaos, centralized notes, and captured KPIs with a simple company OS and GPT workflows
+Bullet, Project team scaled workload without new hires by automating status updates, follow ups, and documentation
+Callout, Want the details, Ask for the Sparkle OS case summary on our call
+Section, Why Fripse
+Point, Utah local, hands on, tool agnostic
+Point, Practical over hype, we use the tools you already have
+Point, Measurable outcomes, hours saved and errors reduced
+Micro CTA, Book Assessment
+Section, Not ready yet
+Heading, Take the 5 minute AI Readiness Quiz
+Body, Find out where AI fits today and what to do first
+Button, Start the Quiz
+Build a simple quiz page at, slash,quiz, with five questions and a results screen that recommends the Checkup or Deep Dive, plus email capture
+FAQ
+Q, How fast can we see results
+A, Most clients see time savings within one to two weeks for admin and communication use cases
+Q, Do you only work with contractors
+A, We work with professional and service businesses across the Salt Lake Valley, including contractors, tax and accounting, and home services
+Q, What do the sessions include
+A, Interviews, workflow mapping, prompt design, a prioritized roadmap, and optional team training
+Final CTA bar
+Heading, Ready to see where AI fits in your business
+Button, Book Your Assessment
+Technical
+• Add schema, script type application,slash,ld plus json for a LocalBusiness with name Fripse AI, area served Salt Lake City Utah, sameAs for linkedin, twitter if available, and a Service for AI Business Assessment
+• Add Organization logo markup and WebSite plus SearchAction for the on site search if present
+• Title tag, AI Business Assessment for Utah Small Businesses, Fripse AI
+• Meta description, Not sure how AI fits your business, Start with a paid assessment that maps workflows, finds quick wins, and trains your team
+• Add Open Graph image placeholder and favicon
+• Build, slash,assessment, page that repeats the Assessment section with more detail, an outline of agenda for both offers, and a single CTA to fripse,slash,book
+• Build, slash,proof, page with the two proof blurbs and a CTA
+• Keep existing, slash,about, and, slash,blog, routes intact
+• Create a lightweight form endpoint for the quiz that saves name and email to a simple JSON file in, slash,data, if server code is allowed, otherwise route to a mailto fallback
+• Ensure buttons have aria labels, sufficient contrast, and focus styles
+• Compress images and lazy load below the fold
+Style
+• Clean, modern, readable type, Montserrat for headings, Lato for body
+• Use existing brand colors provided on site if already set, otherwise use deep navy for text, light background, primary blue accents
+• Big clear buttons and plenty of whitespace
+• No animation beyond subtle hover states
+Redirects and cleanup
+• Remove or redirect links to package pages to, slash,assessment
+• Replace all instances of Book a Free AI Strategy Call with Book Assessment
+• Keep fripse,slash,book untouched for scheduling
+Deliverables
+• Updated index,html or root page component with the new sections and copy above
+• New pages, assessment, proof, quiz
+• JSON LD schema embedded on all pages
+• CSS updated for responsive layout, test on mobile widths

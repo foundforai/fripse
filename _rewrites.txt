@@ -1,0 +1,1 @@
+https://www.fripse.com/*  https://fripse.com/:splat  301!

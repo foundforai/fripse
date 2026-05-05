@@ -1,0 +1,118 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+>>
+endobj
+
+4 0 obj
+<<
+/Length 1200
+>>
+stream
+BT
+/F1 28 Tf
+50 720 Td
+(AI READINESS CHECKLIST) Tj
+0 -40 Td
+/F1 16 Tf
+(Fripse AI Consulting - www.fripse.com) Tj
+0 -60 Td
+/F1 18 Tf
+(Is Your Business Ready for AI?) Tj
+0 -30 Td
+/F1 12 Tf
+(This comprehensive checklist will help you assess your) Tj
+0 -15 Td
+(organization's readiness for AI implementation.) Tj
+0 -40 Td
+/F1 14 Tf
+(ASSESSMENT AREAS:) Tj
+0 -25 Td
+/F1 12 Tf
+(1. Data Infrastructure & Quality) Tj
+0 -15 Td
+(   - Data collection processes) Tj
+0 -15 Td
+(   - Data storage and accessibility) Tj
+0 -15 Td
+(   - Data quality and consistency) Tj
+0 -25 Td
+(2. Technology Stack & Infrastructure) Tj
+0 -15 Td
+(   - Computing resources) Tj
+0 -15 Td
+(   - Integration capabilities) Tj
+0 -15 Td
+(   - Security frameworks) Tj
+0 -25 Td
+(3. Team Capabilities & Skills) Tj
+0 -15 Td
+(   - Technical expertise) Tj
+0 -15 Td
+(   - Change management readiness) Tj
+0 -15 Td
+(   - Training requirements) Tj
+0 -25 Td
+(4. Business Process Documentation) Tj
+0 -15 Td
+(   - Workflow mapping) Tj
+0 -15 Td
+(   - Performance metrics) Tj
+0 -15 Td
+(   - Automation opportunities) Tj
+0 -30 Td
+(For personalized AI consultation, contact Fripse AI) Tj
+0 -15 Td
+(Email: info@fripse.com | www.fripse.com) Tj
+ET
+endstream
+endobj
+
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000053 00000 n 
+0000000108 00000 n 
+0000000263 00000 n 
+0000001515 00000 n 
+trailer
+<<
+/Size 6
+/Root 1 0 R
+>>
+startxref
+1584
+%%EOF

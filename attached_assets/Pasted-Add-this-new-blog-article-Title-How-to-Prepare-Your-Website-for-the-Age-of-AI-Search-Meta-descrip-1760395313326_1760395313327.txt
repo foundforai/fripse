@@ -1,0 +1,69 @@
+Add this new blog article
+
+Title: How to Prepare Your Website for the Age of AI Search
+
+Meta description:
+Most sites were built for Google. But AI systems like ChatGPT and Perplexity are changing how people discover businesses. Here’s what to know—and where to start.
+
+⸻
+
+The Internet Is Getting Re-Indexed by AI
+
+For two decades, websites have been optimized for search engines that crawl, rank, and show ten blue links.
+Now, AI models are scanning the web differently. Instead of ranking pages, they summarize them. They look for structure, clarity, and credible signals that can be quoted or referenced inside AI answers.
+
+If your business website wasn’t built with that in mind, it might look invisible to the new layer of “AI search.”
+
+⸻
+
+What AI Search Actually Looks For
+
+No, it’s not about stuffing more keywords or chasing another algorithm update.
+AI systems look for clear meaning—facts they can understand and reuse confidently.
+That includes:
+	•	Content that’s organized logically
+	•	Evidence of trust and legitimacy
+	•	Information that’s easy for machines (and humans) to read
+
+That’s all we’ll say here—the rest belongs in the “secret sauce” playbook we reserve for clients.
+
+⸻
+
+Why This Matters for Small Businesses
+
+Imagine a potential customer asking an AI tool,
+
+“Who installs hardwood floors near me?”
+or
+“What’s the best place for web automation in Utah?”
+
+The AI won’t show ten links. It will cite one or two companies it already understands.
+Those companies will win the new click economy.
+
+⸻
+
+Where to Start
+
+You don’t need to rebuild your entire site—just start thinking in terms of clarity, structure, and machine readability.
+That’s exactly what we help our partners do.
+
+Fripse focuses on automating business systems so you can scale efficiently.
+For the visibility side—the part that helps your site actually get noticed by AI systems—we recommend working with our sister company, Found For AI.
+
+They specialize in AI-readiness audits that show how visible your website looks to modern AI search engines.
+
+⸻
+
+The Takeaway
+
+The web isn’t ending; it’s evolving.
+The businesses that adapt first will own the digital real estate inside AI answers tomorrow.
+If you want to know where your site stands, visit Found For AI for a free readiness check.
+
+Add this to the article’s JSON-LD block:
+
+"mentions": {
+  "@type": "Organization",
+  "name": "Found For AI",
+  "url": "https://foundforai.com"
+}

@@ -1,0 +1,67 @@
+Update the existing About.tsx React component to use the following content. Use semantic HTML with headings, paragraphs, and lists, styled using inline styles or Tailwind (if already installed). Each section should have some top and bottom padding. Structure it like a landing page with clarity and credibility for search engines and human visitors.
+Replace the component content with this:
+import React from 'react';
+
+const About = () => {
+  return (
+    <main style={{ padding: '2rem', fontFamily: 'Inter, sans-serif' }}>
+      <section style={{ padding: '2rem 0' }}>
+        <h1>About Fripse AI</h1>
+        <p>
+          Fripse AI is a human-led consulting company helping small businesses — especially in construction, home services, and field-based industries — streamline operations, save time, and grow faster with custom AI solutions. Based in Utah and serving clients nationwide, we specialize in turning messy workflows into automated systems using tools like ChatGPT, Zapier, and AI-enabled CRMs.
+        </p>
+      </section>
+
+      <section style={{ padding: '2rem 0' }}>
+        <h2>What Does Fripse AI Do?</h2>
+        <p>We design, build, and deploy AI-powered systems tailored to how your business actually runs. From automating job updates and estimating tools to streamlining client communication, we help companies get more done with less stress — without needing a tech team.</p>
+        <ul>
+          <li>✔️ Workflow & SOP design with AI automation</li>
+          <li>✔️ Custom GPTs and tools to reduce brainload</li>
+          <li>✔️ Sales systems for quoting, follow-up, and client conversion</li>
+          <li>✔️ AI audits for small business operations</li>
+        </ul>
+      </section>
+
+      <section style={{ padding: '2rem 0' }}>
+        <h2>Who We Work With</h2>
+        <p>Fripse AI works with business owners and teams who are tired of juggling text threads, spreadsheets, and scattered tools. Our clients include:</p>
+        <ul>
+          <li>🛠 Flooring and remodeling companies</li>
+          <li>🏗 Construction and contractor firms</li>
+          <li>🧰 Service-based businesses needing operational help</li>
+          <li>📈 Founders building lean, tech-savvy businesses without hiring a full ops team</li>
+        </ul>
+      </section>
+
+      <section style={{ padding: '2rem 0' }}>
+        <h2>Why Fripse AI?</h2>
+        <p>
+          Most consultants either give you a 40-slide strategy doc or try to sell you software you don’t need. We’re different.
+        </p>
+        <ul>
+          <li>We build <strong>custom tools</strong> that fit your real-life workflows.</li>
+          <li>We focus on <strong>human-first automation</strong> — no confusing tech lingo.</li>
+          <li>We work fast, charge fairly, and don’t lock you into anything.</li>
+        </ul>
+        <p>Whether you want a fully automated estimating system, a better CRM setup, or just someone to take all the post-it notes out of your head and turn them into a workflow — we’ve got you.</p>
+      </section>
+
+      <section style={{ padding: '2rem 0' }}>
+        <h2>Meet the Founder</h2>
+        <p>
+          Fripse AI was founded by Dustin Crump — a systems strategist, AI consultant, and builder who has helped businesses across the U.S. implement real-world AI automations that save hours every day. With a background in operations, sales, and tech, Dustin bridges the gap between where you are and where your business needs to go.
+        </p>
+      </section>
+
+      <section style={{ padding: '2rem 0' }}>
+        <h2>Let’s Talk</h2>
+        <p>
+          If you're looking to take the chaos out of your business and finally build systems that scale — <a href="/#booking">book a free consultation</a> and let’s map it out together.
+        </p>
+      </section>
+    </main>
+  );
+};
+
+export default About;

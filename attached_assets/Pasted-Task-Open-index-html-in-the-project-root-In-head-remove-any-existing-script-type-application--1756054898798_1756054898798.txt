@@ -1,0 +1,129 @@
+Task
+Open /index.html in the project root.
+In <head>, remove any existing <script type="application/ld+json"> block that contains "@type":"LocalBusiness" or "LocalBusiness".
+Insert the following @graph JSON-LD right after meta tags.
+Do not change anything else on the page.
+Create a new visible FAQ section at the bottom of the homepage so the FAQ schema has matching HTML. Place it just above the footer.
+Save, run, and show me the diff.
+JSON-LD to insert (use this exact code, no street address):
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization","ProfessionalService","LocalBusiness"],
+      "@id": "https://fripse.com/#org",
+      "name": "Fripse AI",
+      "url": "https://fripse.com/",
+      "logo": "https://fripse.com/logo.png",
+      "image": "https://fripse.com/og-image.png",
+      "description": "AI consulting and automation for professional services and small businesses in the Salt Lake City area.",
+      "telephone": "+1-801-790-0923",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Salt Lake City",
+        "addressRegion": "UT",
+        "postalCode": "84121",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.6197,
+        "longitude": -111.8107
+      },
+      "areaServed": [
+        {"@type":"City","name":"Salt Lake City"},
+        {"@type":"City","name":"Cottonwood Heights"},
+        {"@type":"City","name":"Sandy"},
+        {"@type":"City","name":"Draper"},
+        {"@type":"City","name":"Murray"},
+        {"@type":"AdministrativeArea","name":"Utah"}
+      ],
+      "openingHoursSpecification": [
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}
+      ],
+      "sameAs": [
+        "https://www.google.com/maps/place/?q=place_id:TODO_REPLACE_WITH_YOUR_PLACEID",
+        "https://www.linkedin.com/in/fripse/",
+        "https://x.com/fripseai"
+      ],
+      "founder": {"@type":"Person","name":"Dustin Crump"},
+      "hasOfferCatalog": {
+        "@type":"OfferCatalog",
+        "name":"AI Consulting Packages",
+        "itemListElement":[
+          {"@type":"Offer","name":"Quick Win Day","price":"2500","priceCurrency":"USD","itemOffered":{"@type":"Service","serviceType":"AI process audit and implementation"}},
+          {"@type":"Offer","name":"Ops Overhaul","price":"15000","priceCurrency":"USD","itemOffered":{"@type":"Service","serviceType":"Systems build with proprietary GPTs"}},
+          {"@type":"Offer","name":"AI Co-Pilot","price":"60000","priceCurrency":"USD","itemOffered":{"@type":"Service","serviceType":"Full install, training, rollout"}}
+        ]
+      },
+      "aggregateRating": {
+        "@type":"AggregateRating",
+        "ratingValue":"5.0",
+        "reviewCount":"7"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://fripse.com/#website",
+      "url": "https://fripse.com/",
+      "name": "Fripse AI",
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://fripse.com/search?q={query}",
+        "query-input": "required name=query"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://fripse.com/#webpage",
+      "url": "https://fripse.com/",
+      "name": "Fripse AI - Utah AI Consulting",
+      "isPartOf": {"@id":"https://fripse.com/#website"},
+      "about": {"@id":"https://fripse.com/#org"},
+      "primaryImageOfPage": {"@type":"ImageObject","url":"https://fripse.com/og-image.png"},
+      "dateModified": "2025-08-24"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://fripse.com/"},
+        {"@type":"ListItem","position":2,"name":"Services","item":"https://fripse.com/#services"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://fripse.com/#service-automation",
+      "serviceType": "AI Automation for Small Business",
+      "provider": {"@id":"https://fripse.com/#org"},
+      "areaServed": {"@type":"AdministrativeArea","name":"Salt Lake County"},
+      "availableChannel": {"@type":"ServiceChannel","serviceUrl":"https://fripse.com/book"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Do you serve contractors in Cottonwood Heights and Sandy?","acceptedAnswer":{"@type":"Answer","text":"Yes, we serve the entire Salt Lake Valley, including Cottonwood Heights, Sandy, Draper, Murray, and nearby."}},
+        {"@type":"Question","name":"How fast can we see results?","acceptedAnswer":{"@type":"Answer","text":"Most clients see tangible time savings within 2 to 4 weeks, often within the first week for admin automations."}}
+      ]
+    }
+  ]
+}
+</script>
+Visible FAQ HTML to add above the footer
+<section id="faqs" class="py-12 bg-white">
+  <div class="container-custom">
+    <h2 class="text-2xl font-bold text-primary mb-4">FAQ</h2>
+    <div class="space-y-4">
+      <div>
+        <h3 class="font-semibold">Do you serve contractors in Cottonwood Heights and Sandy?</h3>
+        <p>Yes, we serve the entire Salt Lake Valley, including Cottonwood Heights, Sandy, Draper, Murray, and nearby.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold">How fast can we see results?</h3>
+        <p>Most clients see tangible time savings within 2 to 4 weeks, often within the first week for admin automations.</p>
+      </div>
+    </div>
+  </div>
+</section>

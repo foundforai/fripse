@@ -1,0 +1,106 @@
+You are updating my Replit project for SEO and canonicalization. Make exactly these changes so https://fripse.com is the one true canonical and everything else 301s to it.
+
+1) Add a tiny Node server that forces HTTPS and strips www, then serves my static site.
+
+Create server.js with this code:
+
+--------------------------------
+const express = require("express");
+const path = require("path");
+const compression = require("compression");
+
+const app = express();
+app.enable("trust proxy");
+
+app.use((req, res, next) => {
+  const host = req.headers.host || "";
+  // force HTTPS
+  if (!req.secure) {
+    return res.redirect(301, `https://${host}${req.originalUrl}`);
+  }
+  // strip www
+  if (host.startsWith("www.")) {
+    const apex = host.replace(/^www\./, "");
+    return res.redirect(301, `https://${apex}${req.originalUrl}`);
+  }
+  return next();
+});
+
+app.use(compression());
+app.use(express.static(path.join(__dirname, "public"), { fallthrough: true }));
+
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+--------------------------------
+
+2) Ensure dependencies and start script exist.
+
+Create or update package.json to include:
+
+--------------------------------
+{
+  "name": "fripse-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.5",
+    "express": "^4.19.2"
+  }
+}
+--------------------------------
+
+Run "npm install" after writing package.json.
+
+3) Serve a static folder named public. Move my current built site into public if it is not already there.
+
+4) Add a canonical tag to the head of public/index.html that matches the apex exactly, including the trailing slash. If the tag exists, make it match this value.
+
+Insert in the <head>:
+<link rel="canonical" href="https://fripse.com/">
+
+5) Create robots.txt at public/robots.txt that points to the sitemap and allows crawling.
+
+--------------------------------
+User-agent: *
+Allow: /
+
+Sitemap: https://fripse.com/sitemap.xml
+--------------------------------
+
+6) Create a simple sitemap with only canonical URLs that currently exist. Add more later as pages launch.
+
+Create public/sitemap.xml with:
+
+--------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://fripse.com/</loc></url>
+  <url><loc>https://fripse.com/termsOfService</loc></url>
+  <url><loc>https://fripse.com/privacy</loc></url>
+</urlset>
+--------------------------------
+
+7) Make sure the project listens on the provided PORT env var, which the server already does, then run and verify.
+
+8) In Replit project settings, add both domains so the server can redirect correctly:
+- fripse.com
+- www.fripse.com
+Follow the Replit instructions to set DNS for both, then deploy.
+
+9) After deploy, print the results of these four commands in the Replit shell so I can see the status codes:
+curl -I http://fripse.com/
+curl -I http://www.fripse.com/
+curl -I https://www.fripse.com/
+curl -I https://fripse.com/
+
+Expected:
+the first three return 301 to https://fripse.com/..., the last returns 200.

@@ -1,0 +1,79 @@
+Build a high-converting, modern website for a professional AI consulting firm called Fripse. This site should position us as a premium solution for small business AI transformation, especially in industries like construction, estimating, and project management.
+
+Goals:
+	•	Establish trust and authority as a leading AI consulting firm
+	•	Generate leads via clear, action-oriented CTAs
+	•	Get users to book a free AI strategy call or sign up for our email list
+
+Site Structure & Content
+
+1. Hero Section (Above the Fold)
+	•	Headline: “Smarter Work Starts Here.”
+	•	Subtext: “Fripse helps small businesses save time and scale faster with tailored AI systems for operations, project management, and client communications.”
+	•	Primary CTA: “Book a Free AI Strategy Call” (button, links to Calendly or form)
+	•	Secondary CTA: “Not ready yet? Join our newsletter to see what’s possible.” (email capture)
+
+2. Trust & Benefits Section
+	•	Icons or tiles for key benefits:
+	•	Save 10+ hours per week
+	•	Reduce manual admin tasks by 80%
+	•	Launch custom AI tools without writing code
+	•	Headline: “AI That Pays for Itself”
+	•	Add 1–2 short example use cases
+
+3. Service Tiers Section
+	•	Headline: “Choose Your AI Accelerator”
+	•	Three visual columns:
+	•	Quick Win Day – $2,500
+	•	Audit + 2 automations
+	•	Custom GPT prompt pack
+	•	Training + support
+	•	Ops Overhaul – $7,500 (highlight as “Most Popular”)
+	•	Full system audit
+	•	5–7 tailored AI tools
+	•	SOPs, training, 30-day support
+	•	AI Co-Pilot – $60,000
+	•	2-week full install
+	•	Staff training, tools, coaching
+	•	60-day rollout support
+
+4. What We Automate Section
+	•	Short, benefit-led tiles:
+	•	Project updates via auto-generated emails
+	•	Meeting summaries from recordings
+	•	Sales proposals from voice notes
+	•	SOPs and training docs from raw input
+	•	Add subtle animation or hover effects
+
+5. Lead Magnet / Newsletter Signup
+	•	Headline: “Steal Our Playbook”
+	•	Subtext: “Get our free PDF: 5 AI Workflows Every Small Business Should Steal”
+	•	Email capture form
+	•	Setup for ConvertKit, Mailchimp, or Replit placeholder
+
+6. Contact / CTA Section
+	•	Headline: “Let’s Build Your AI Plan”
+	•	Short copy: “Tell us about your business. We’ll show you what’s possible with AI in just one Zoom call.”
+	•	Contact form with fields:
+	•	Name
+	•	Company
+	•	Email
+	•	Quick description of goals or problems
+	•	Submit button labeled “Get My Free Consult”
+
+Design Instructions
+	•	Clean, minimalist white layout
+	•	Use a highlight color (deep blue or emerald green)
+	•	Modern font (Inter, Lato, or similar)
+	•	Fully mobile responsive
+	•	Sticky nav with anchor links to each section
+	•	Scroll-trigger animations optional
+
+Tech Specs
+	•	Code in HTML/CSS/JavaScript (React optional)
+	•	Include comments or markdown blocks for easy edits
+	•	Add placeholder images/icons I can swap
+	•	Include meta tags and title for SEO
+	•	Include alt text for all images
+
+Final note: this is a professional website for a business that wants to appear like a 5–10 person boutique AI firm—not a solo freelancer.

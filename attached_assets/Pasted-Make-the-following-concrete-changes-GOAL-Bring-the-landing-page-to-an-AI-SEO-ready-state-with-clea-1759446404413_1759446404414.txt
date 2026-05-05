@@ -1,0 +1,214 @@
+Make the following concrete changes.
+
+GOAL
+Bring the landing page to an AI-SEO ready state with clear headings, readable copy, LLM-friendly sections, correct meta, working OG/Twitter tags, valid Schema.org JSON-LD, a valid /.well-known/llms.txt and mcp.json, and remove dead sameAs links.
+
+FILES TO EDIT
+1) /index.html
+2) /.well-known/llms.txt
+3) /.well-known/mcp.json
+
+-------------------------
+1) /index.html
+a) HTML tag and language
+- Set <html lang="en">.
+- Ensure visible copy is in English and targeted to Utah small businesses OR, if we keep it generic, remove the word "Utah" everywhere. Use the Utah version below.
+
+b) <head> meta and links
+Replace the current <title> and meta with:
+
+<title>AI Business Assessment for Utah Small Businesses | Fripse AI</title>
+<link rel="canonical" href="https://fripse.com/">
+<meta name="description" content="Not sure how AI fits your business? Start with an AI Business Assessment that maps workflows, finds quick wins, and trains your team. Built for Utah small businesses.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fripse AI">
+<meta property="og:title" content="AI Business Assessment for Utah Small Businesses | Fripse AI">
+<meta property="og:description" content="Map where AI saves time and makes money in your workflows. Fast audit, clear ROI, Utah-focused.">
+<meta property="og:url" content="https://fripse.com/">
+<meta property="og:image" content="https://fripse.com/og-image.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fripseai">
+<meta name="twitter:title" content="AI Business Assessment for Utah Small Businesses | Fripse AI">
+<meta name="twitter:description" content="Quick AI wins for operators. Audit, roadmap, and team training.">
+<meta name="twitter:image" content="https://fripse.com/og-image.png">
+
+<!-- Hreflang -->
+<link rel="alternate" href="https://fripse.com/" hreflang="en-us">
+
+c) Body structure, add real content with headings, lists, FAQs, and a small table so LLMs can segment and quote accurately. Inject this just inside <main> as the primary content. Make sure there is exactly one H1 and logical H2 H3 nesting. Use clean semantic HTML, no frameworks needed.
+
+<main id="main-content">
+  <header>
+    <h1>AI Business Assessment for Utah Small Businesses</h1>
+    <p>We analyze your workflows, quantify ROI, and build a 90-day AI action plan your team can run without you.</p>
+    <a href="#packages">See Packages</a>
+  </header>
+
+  <section id="outcomes">
+    <h2>What You Get</h2>
+    <ul>
+      <li>Workflow map showing where AI saves time and increases margin</li>
+      <li>Quick-win automations delivered in week one</li>
+      <li>90-day roadmap with KPIs and owner dashboard</li>
+      <li>Team training with simple SOPs and Looms</li>
+    </ul>
+  </section>
+
+  <section id="process">
+    <h2>Our Process</h2>
+    <h3>1. Discovery</h3>
+    <p>We interview the owner and one operator, review tools, and pull sample data.</p>
+    <h3>2. Assessment</h3>
+    <p>We score opportunities by impact, effort, risk, and cost, then prioritize.</p>
+    <h3>3. Delivery</h3>
+    <p>We implement the top quick wins and hand over SOPs and training.</p>
+  </section>
+
+  <section id="packages">
+    <h2>Packages</h2>
+    <table>
+      <caption>Assessment Packages</caption>
+      <thead>
+        <tr><th>Package</th><th>Who It’s For</th><th>Includes</th><th>Typical ROI</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Starter</td><td>Solo or 1–5 staff</td><td>Half-day assessment, 2 quick wins</td><td>2–5x in 90 days</td></tr>
+        <tr><td>Operator</td><td>6–25 staff</td><td>Full-day, 4 quick wins, KPI dashboard</td><td>3–7x in 90 days</td></tr>
+        <tr><td>Scale</td><td>25+ staff</td><td>Two days, 6 quick wins, training plan</td><td>4–10x in 90 days</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="faq">
+    <h2>FAQs</h2>
+    <div itemscope itemtype="https://schema.org/FAQPage">
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name">How fast do we see results?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Most clients ship at least one automation in week one, with measurable time savings in the first month.</p>
+        </div>
+      </div>
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Do you train our team?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Yes, we include SOPs and short Loom videos so operators can run the system without you.</p>
+        </div>
+      </div>
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name">What tools do you support?</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Google Workspace, Office 365, QuickBooks, Markate, Notion, Slack, Zapier, Make, Airtable, and major LLMs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+d) JSON-LD, place these two <script type="application/ld+json"> blocks in <head>. Update phone if needed.
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Fripse AI",
+  "url": "https://fripse.com/",
+  "logo": "https://fripse.com/og-image.png",
+  "sameAs": [
+    "https://x.com/fripseai"
+    /* Remove LinkedIn until the URL is confirmed alive to avoid dead sameAs flags */
+  ],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "telephone": "+1-801-898-2456",
+    "areaServed": "US-UT"
+  }]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://fripse.com/",
+  "name": "Fripse AI",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://fripse.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+Optional, add BreadcrumbList if you have multiple pages later.
+
+e) Accessibility and media
+- Ensure there is at least one meaningful <img> on the page that matches og:image and includes alt text:
+<img src="/og-image.png" alt="Fripse AI, AI Business Assessment for Utah Small Businesses" width="1200" height="630">
+
+f) Remove any French-language blocks to eliminate the language mismatch. Keep the entire page English.
+
+-------------------------
+2) /.well-known/llms.txt
+Create this exact file with UTF-8 text:
+
+# LLM Crawling Instructions for fripse.com
+Allow: /
+Sitemap: https://fripse.com/sitemap.xml
+PrimaryLanguage: en
+Contact: hello@fripse.com
+Policy: Content may be used for indexing and snippet generation with attribution to “Fripse AI”.
+RateLimit: 1 rps
+
+# Helpful entry points
+Entry: https://fripse.com/
+Entry: https://fripse.com/sitemap.xml
+
+-------------------------
+3) /.well-known/mcp.json
+Provide valid JSON describing public resources. Use this minimal valid object to pass checks:
+
+{
+  "name": "Fripse AI MCP",
+  "version": "1.0.0",
+  "description": "Machine-Consumable Profile for Fripse AI. Public endpoints and docs for AI agents.",
+  "homepage": "https://fripse.com/",
+  "endpoints": {
+    "sitemap": "https://fripse.com/sitemap.xml",
+    "robots": "https://fripse.com/robots.txt",
+    "ogImage": "https://fripse.com/og-image.png"
+  },
+  "owner": {
+    "organization": "Fripse AI",
+    "contactEmail": "hello@fripse.com",
+    "region": "US-UT"
+  },
+  "ai": {
+    "llmsTxt": "https://fripse.com/.well-known/llms.txt",
+    "allowedBots": [
+      "GPTBot",
+      "OAI-SearchBot",
+      "ClaudeBot",
+      "PerplexityBot",
+      "Google-Extended"
+    ]
+  }
+}
+
+-------------------------
+QUALITY BARS
+- Flesch reading score target 60+, short sentences, simple words.
+- Exactly one H1, at least two H2, at least three H3.
+- Keep visible word count > 250 words so LLM clarity checks have substance.
+- Ensure no dead sameAs links. If LinkedIn is not live, omit it.
+- Keep existing sitemap and robots, no insecure redirects.
+
+When done, run a build, and ensure all three new sections render and files resolve at:
+https://fripse.com/.well-known/llms.txt
+https://fripse.com/.well-known/mcp.json

@@ -1,0 +1,142 @@
+import express, { type Request, Response, NextFunction } from "express";
+import { registerRoutes } from "./routes";
+import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
+
+const app = express();
+
+const TARGET_HOST = "fripse.com";
+
+app.set("trust proxy", true);
+
+app.use((req, res, next) => {
+  const host =
+    String(req.headers["x-forwarded-host"] || req.headers.host || "").toLowerCase();
+
+  if (host === `www.${TARGET_HOST}`) {
+    const dest = `https://${TARGET_HOST}${req.originalUrl || "/"}`;
+    return res.redirect(308, dest);
+  }
+
+  // Already apex or some other host, do nothing to avoid loops
+  return next();
+});
+
+// Optional harden, send HSTS only when on apex
+app.use((req, res, next) => {
+  const host =
+    String(req.headers["x-forwarded-host"] || req.headers.host || "").toLowerCase();
+  if (host === TARGET_HOST) {
+    res.setHeader("Strict-Transport-Security", "max-age=31536000");
+  }
+  next();
+});
+
+// Serve static files from public directory
+app.use('/files', express.static(path.join(process.cwd(), 'public/files')));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use((req, res, next) => {
+  const start = Date.now();
+  const path = req.path;
+  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+
+  const originalResJson = res.json;
+  res.json = function (bodyJson, ...args) {
+    capturedJsonResponse = bodyJson;
+    return originalResJson.apply(res, [bodyJson, ...args]);
+  };
+
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    if (path.startsWith("/api")) {
+      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
+      if (capturedJsonResponse) {
+        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+      }
+
+      if (logLine.length > 80) {
+        logLine = logLine.slice(0, 79) + "…";
+      }
+
+      log(logLine);
+    }
+  });
+
+  next();
+});
+
+(async () => {
+  // Priority route for sitemap.xml BEFORE all other middleware
+  app.get('/sitemap.xml', (req, res) => {
+    const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://fripse.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://fripse.com/about</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fripse.com/book</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fripse.com/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>`;
+    
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.send(sitemapContent);
+  });
+
+  const server = await registerRoutes(app);
+
+  // Serve static files from root directory for sitemap fallback
+  app.use(express.static('.'));
+  
+  // Serve static files from public directory  
+  app.use(express.static('public'));
+
+  // Serve static files from client/public directory for other assets
+  app.use(express.static('client/public'));
+
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+
+    res.status(status).json({ message });
+    throw err;
+  });
+
+  // importantly only setup vite in development and after
+  // setting up all the other routes so the catch-all route
+  // doesn't interfere with the other routes
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
+  }
+
+  // ALWAYS serve the app on port 5000
+  // this serves both the API and the client.
+  // It is the only port that is not firewalled.
+  const port = 5000;
+  server.listen({
+    port,
+    host: "0.0.0.0",
+    reusePort: true,
+  }, () => {
+    log(`serving on port ${port}`);
+  });
+})();

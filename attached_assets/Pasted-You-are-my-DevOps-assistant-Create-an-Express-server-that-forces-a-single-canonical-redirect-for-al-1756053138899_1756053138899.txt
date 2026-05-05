@@ -1,0 +1,90 @@
+You are my DevOps assistant. Create an Express server that forces a single canonical redirect for all traffic to https://fripse.com without “:443” and then serves my built site.
+Requirements
+Force 301 redirects to the apex, preserving path and query:
+http → https
+www.fripse.com → fripse.com
+any other host → fripse.com
+Never include “:443” in the Location header.
+Use HSTS (includeSubDomains, preload, maxAge 1 year).
+Send a clean 200 for https://fripse.com/ and serve static files from dist (or build if that’s what exists).
+Add basic hardening: helmet, compression, and sensible cache headers for static assets.
+Configure Express correctly behind a proxy by enabling trust proxy.
+Update project files so the server is the default run command on Replit.
+Provide me the exact curl -I checks to verify the fix, plus expected outputs.
+Implementation details
+Create server.js with:
+app.enable('trust proxy')
+Redirect middleware that examines req.hostname and req.protocol and issues a single 301 to https://fripse.com${req.originalUrl} when needed.
+HSTS via helmet.hsts({ maxAge: 31536000, includeSubDomains: true, preload: true }).
+compression() and helmet() defaults.
+Static serving from dist if present else build. Fallback to index.html for SPA routes.
+Add npm deps: express, helmet, compression, serve-static (if needed).
+Update package.json with:
+"scripts": {
+  "start": "node server.js",
+  "build": "vite build"
+}
+Update .replit or Replit “Run” configuration to run npm start.
+server.js skeleton to use (fill in paths automatically):
+const express = require('express');
+const path = require('path');
+const helmet = require('helmet');
+const compression = require('compression');
+
+const app = express();
+app.enable('trust proxy'); // required on Replit/hosted proxies
+
+const CANON_HOST = 'fripse.com';
+
+app.use((req, res, next) => {
+  const host = (req.headers.host || '').toLowerCase();
+  const isHttps = req.secure || req.headers['x-forwarded-proto'] === 'https';
+  const needsHttps = !isHttps;
+  const needsHostFix = host !== CANON_HOST;
+
+  if (needsHttps || needsHostFix) {
+    const location = `https://${CANON_HOST}${req.originalUrl || '/'}`;
+    // one clean hop, no :443
+    return res.redirect(301, location);
+  }
+  return next();
+});
+
+app.use(helmet());
+app.use(
+  helmet.hsts({
+    maxAge: 31536000, // 1 year
+    includeSubDomains: true,
+    preload: true
+  })
+);
+app.use(compression());
+
+const staticDir = ['dist', 'build'].map(p => path.join(__dirname, p)).find(p => {
+  try { return require('fs').existsSync(p); } catch { return false; }
+});
+
+if (!staticDir) {
+  console.warn('No dist/build directory found. Add your built files.');
+}
+
+app.use(express.static(staticDir || '.', {
+  setHeaders: (res, filePath) => {
+    if (/\.(js|css|png|jpg|jpeg|gif|svg|webp|ico|woff2?)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=300');
+    }
+  }
+}));
+
+// SPA fallback
+app.get('*', (req, res) => {
+  const indexPath = require('path').join(staticDir || '.', 'index.html');
+  res.sendFile(indexPath);
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
+});
