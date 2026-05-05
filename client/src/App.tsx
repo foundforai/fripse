@@ -7,7 +7,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import NotFoundPage from "@/pages/404";
 import Home from "@/pages/Home";
-import Admin from "@/pages/Admin";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import About from "@/pages/About";
@@ -28,7 +27,6 @@ function Router() {
       <Route path="/quiz" component={Quiz} />
       <Route path="/book" component={Booking} />
       <Route path="/booking" component={Booking} />
-      <Route path="/admin" component={Admin} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/lead-capture-demo" component={LeadCaptureDemo} />

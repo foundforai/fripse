@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { useParams, Link } from "wouter";
-import { CalendarDays, User, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { BlogPost } from "@shared/schema";
+import { getBlogPostBySlug } from "@/data/blogPosts";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Navbar from "@/components/Navbar";
@@ -37,122 +36,94 @@ const getBannerImageUrl = (title: string, content: string): string => {
 
 const BlogPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [activeSection, setActiveSection] = useState("");
-  
-  const { data, isLoading, error } = useQuery<{ success: boolean; post: BlogPost }>({
-    queryKey: ['/api/blog', slug],
-    queryFn: () => fetch(`/api/blog/${slug}`).then(res => res.json()),
-  });
+  const [activeSection] = useState("");
+  const post = slug ? getBlogPostBySlug(slug) : undefined;
 
-  const scrollToContact = () => {
-    window.location.href = "/#contact";
-  };
-
-  // Update page title, meta description, and schema markup for SEO
   useEffect(() => {
-    if (data?.success && data.post) {
-      document.title = `${data.post.title} | Fripse AI - Utah AI Consulting`;
-      
-      // Update meta description
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', data.post.excerpt);
-      }
+    if (!post) return;
 
-      // Add JSON-LD schema markup for the blog post
-      const existingSchema = document.querySelector('#blog-post-schema');
-      if (existingSchema) {
-        existingSchema.remove();
-      }
+    document.title = `${post.title} | Fripse AI - Utah AI Consulting`;
 
-      const schemaScript = document.createElement('script');
-      schemaScript.id = 'blog-post-schema';
-      schemaScript.type = 'application/ld+json';
-      
-      // Generate keywords based on post content and title
-      let keywords = "AI consulting, business automation, artificial intelligence";
-      if (data.post.title.toLowerCase().includes("emotional intelligence")) {
-        keywords = "AI emotional intelligence, GPT-4 EQ, emotionally aware AI, business AI adoption, Fripse AI";
-      } else if (data.post.title.toLowerCase().includes("meta") && data.post.title.toLowerCase().includes("advertising")) {
-        keywords = "Meta AI advertising, automated ad campaigns, AI marketing, Facebook ads automation, digital advertising AI";
-      } else if (data.post.title.toLowerCase().includes("perplexity")) {
-        keywords = "Perplexity AI, small business AI strategy, custom AI tools, business automation, AI adoption, internal AI systems";
-      } else if (data.post.title.toLowerCase().includes("seo") && data.post.title.toLowerCase().includes("ai")) {
-        keywords = "AI SEO optimization, schema markup, structured data, AI-first search, Google AI overviews, search engine optimization";
-      } else if (data.post.title.toLowerCase().includes("prepare your website") && data.post.title.toLowerCase().includes("ai search")) {
-        keywords = "AI search optimization, website AI readiness, ChatGPT search, Perplexity discovery, AI visibility, machine readability";
-      }
-      
-      const schemaData: any = {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": data.post.title,
-        "alternativeHeadline": data.post.excerpt,
-        "description": data.post.excerpt,
-        "author": {
-          "@type": "Organization",
-          "name": "Fripse AI",
-          "url": "https://fripse.com"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Fripse AI",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://fripse.com/logo.png"
-          }
-        },
-        "datePublished": data.post.publishedAt,
-        "dateModified": data.post.updatedAt,
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": `https://fripse.com/blog/${data.post.slug}`
-        },
-        "articleSection": "AI Consulting",
-        "keywords": keywords
-      };
-
-      // Add mentions for specific posts
-      if (data.post.slug === "how-to-prepare-website-age-ai-search") {
-        schemaData.mentions = {
-          "@type": "Organization",
-          "name": "Found For AI",
-          "url": "https://foundforai.com"
-        };
-      }
-      
-      schemaScript.textContent = JSON.stringify(schemaData);
-      document.head.appendChild(schemaScript);
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', post.excerpt);
     }
-    
-    // Cleanup: restore default title and remove schema when component unmounts
+
+    const existingSchema = document.querySelector('#blog-post-schema');
+    if (existingSchema) {
+      existingSchema.remove();
+    }
+
+    const schemaScript = document.createElement('script');
+    schemaScript.id = 'blog-post-schema';
+    schemaScript.type = 'application/ld+json';
+
+    let keywords = "AI consulting, business automation, artificial intelligence";
+    const t = post.title.toLowerCase();
+    if (t.includes("emotional intelligence")) {
+      keywords = "AI emotional intelligence, GPT-4 EQ, emotionally aware AI, business AI adoption, Fripse AI";
+    } else if (t.includes("meta") && t.includes("advertising")) {
+      keywords = "Meta AI advertising, automated ad campaigns, AI marketing, Facebook ads automation, digital advertising AI";
+    } else if (t.includes("perplexity")) {
+      keywords = "Perplexity AI, small business AI strategy, custom AI tools, business automation, AI adoption, internal AI systems";
+    } else if (t.includes("seo") && t.includes("ai")) {
+      keywords = "AI SEO optimization, schema markup, structured data, AI-first search, Google AI overviews, search engine optimization";
+    } else if (t.includes("prepare your website") && t.includes("ai search")) {
+      keywords = "AI search optimization, website AI readiness, ChatGPT search, Perplexity discovery, AI visibility, machine readability";
+    }
+
+    const schemaData: any = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "alternativeHeadline": post.excerpt,
+      "description": post.excerpt,
+      "author": {
+        "@type": "Organization",
+        "name": "Fripse AI",
+        "url": "https://fripse.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Fripse AI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://fripse.com/logo.png"
+        }
+      },
+      "datePublished": post.publishedAt,
+      "dateModified": post.updatedAt,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://fripse.com/blog/${post.slug}`
+      },
+      "articleSection": "AI Consulting",
+      "keywords": keywords
+    };
+
+    if (post.slug === "how-to-prepare-website-age-ai-search") {
+      schemaData.mentions = {
+        "@type": "Organization",
+        "name": "Found For AI",
+        "url": "https://foundforai.com"
+      };
+    }
+
+    schemaScript.textContent = JSON.stringify(schemaData);
+    document.head.appendChild(schemaScript);
+
     return () => {
       document.title = "Fripse AI - Utah AI Consulting for Professional & Service Businesses";
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', "Utah's premier AI consulting for professional services, home service companies & small businesses. Transform operations with AI automation in Salt Lake City area.");
+      const md = document.querySelector('meta[name="description"]');
+      if (md) {
+        md.setAttribute('content', "Utah's premier AI consulting for professional services, home service companies & small businesses. Transform operations with AI automation in Salt Lake City area.");
       }
-      const schemaScript = document.querySelector('#blog-post-schema');
-      if (schemaScript) {
-        schemaScript.remove();
-      }
+      const s = document.querySelector('#blog-post-schema');
+      if (s) s.remove();
     };
-  }, [data]);
+  }, [post]);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <Navbar activeSection={activeSection} />
-        <div className="py-20">
-          <div className="container-custom">
-            <div className="text-center">Loading blog post...</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !data?.success) {
+  if (!post) {
     return (
       <div className="min-h-screen bg-gray-50">
         <Navbar activeSection={activeSection} />
@@ -170,8 +141,6 @@ const BlogPostPage: React.FC = () => {
       </div>
     );
   }
-
-  const post = data.post;
 
   return (
     <div className="min-h-screen bg-gray-50">

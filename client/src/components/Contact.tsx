@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
+import { submitToFormspree } from "@/lib/formspree";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { contactFormSchema, type ContactFormData } from "@shared/schema";
+import { contactFormSchema, type ContactFormData } from "@/lib/contactSchema";
 
 const Contact: React.FC = () => {
   const { toast } = useToast();
@@ -27,7 +27,7 @@ const Contact: React.FC = () => {
 
   const contactMutation = useMutation({
     mutationFn: async (data: ContactFormData) => {
-      return await apiRequest("POST", "/api/contact", data);
+      await submitToFormspree(data, "Fripse contact form");
     },
     onSuccess: () => {
       toast({

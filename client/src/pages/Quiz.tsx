@@ -7,9 +7,8 @@ import { Progress } from "@/components/ui/progress";
 import { CheckCircle, ArrowRight, ArrowLeft, Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AdminLink from "@/components/AdminLink";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+import { submitToFormspree } from "@/lib/formspree";
 
 interface Question {
   id: number;
@@ -170,19 +169,19 @@ const Quiz: React.FC = () => {
     }
 
     setIsSubmitting(true);
-    
+
     try {
-      const response = await apiRequest('POST', '/api/submit-email', { email });
-      
-      if (response.ok) {
-        setEmailSubmitted(true);
-        toast({
-          title: "Success!",
-          description: "Your AI Readiness Report has been sent to your email.",
-        });
-      } else {
-        throw new Error('Failed to submit email');
-      }
+      const score = calculateScore();
+      const result = getResultsContent(score);
+      await submitToFormspree(
+        { name, email, quizScore: score, quizLevel: result.level },
+        "Fripse AI Readiness Quiz submission",
+      );
+      setEmailSubmitted(true);
+      toast({
+        title: "Success!",
+        description: "Your AI Readiness Report has been sent to your email.",
+      });
     } catch (error) {
       console.error('Email submission error:', error);
       toast({
@@ -248,7 +247,6 @@ const Quiz: React.FC = () => {
         </section>
         
         <Footer />
-        <AdminLink />
       </div>
     );
   }
@@ -352,7 +350,6 @@ const Quiz: React.FC = () => {
         </section>
         
         <Footer />
-        <AdminLink />
       </div>
     );
   }
@@ -433,7 +430,6 @@ const Quiz: React.FC = () => {
       </section>
       
       <Footer />
-      <AdminLink />
     </div>
   );
 };

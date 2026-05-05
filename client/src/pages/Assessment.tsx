@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Clock, Target, Check, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AdminLink from "@/components/AdminLink";
 
 const Assessment: React.FC = () => {
   return (
@@ -255,7 +254,6 @@ const Assessment: React.FC = () => {
       </section>
       
       <Footer />
-      <AdminLink />
     </div>
   );
 };

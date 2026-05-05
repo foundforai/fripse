@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, CheckCircle, Loader2, Mail, Shield } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { submitToFormspree } from "@/lib/formspree";
 
 // Form validation schema
 const emailFormSchema = z.object({
@@ -44,30 +45,13 @@ export default function LeadCaptureForm({
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("/api/submit-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+      await submitToFormspree(data, "Fripse AI checklist download");
+      setIsSuccess(true);
+      reset();
+      toast({
+        title: "Success!",
+        description: "Your download link is ready.",
       });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      
-      if (result.success) {
-        setIsSuccess(true);
-        reset();
-        toast({
-          title: "Success!",
-          description: "Your download link is ready.",
-        });
-      } else {
-        throw new Error(result.message || "Failed to submit email");
-      }
     } catch (error) {
       console.error("Email submission error:", error);
       toast({

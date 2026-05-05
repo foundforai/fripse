@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, CheckCircle, Loader2, FileText, Shield } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+import { submitToFormspree } from "@/lib/formspree";
 
 // Form validation schema
 const checklistFormSchema = z.object({
@@ -41,29 +41,15 @@ export default function ChecklistLeadCapture({ className = "", compact = false }
 
   const mutation = useMutation({
     mutationFn: async (data: ChecklistFormData) => {
-      // Check honeypot field for spam protection
       if (data.honeypot) {
         throw new Error("Spam detected");
       }
-
       const { honeypot, ...cleanData } = data;
-      const response = await fetch("/api/checklist-lead", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(cleanData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit checklist request");
-      }
-
-      return response.json();
+      await submitToFormspree(cleanData, "Fripse AI Readiness Checklist request");
     },
-    onSuccess: (response: any) => {
+    onSuccess: () => {
       setIsSuccess(true);
-      setDownloadUrl(response.downloadUrl);
+      setDownloadUrl("/files/fripse-ai-checklist.pdf");
       reset();
       toast({
         title: "Success!",

@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { CalendarDays, User, ArrowRight } from "lucide-react";
-import { BlogPost } from "@shared/schema";
+import { blogPosts } from "@/data/blogPosts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -37,41 +35,8 @@ const getCardImageUrl = (title: string, content: string): string => {
 };
 
 const Blog: React.FC = () => {
-  const [activeSection, setActiveSection] = useState("");
-
-  const { data, isLoading, error } = useQuery<{ success: boolean; posts: BlogPost[] }>({
-    queryKey: ['/api/blog'],
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
-    retry: 3,
-    retryDelay: 1000
-  });
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <Navbar activeSection={activeSection} />
-        <div className="pt-24 pb-20">
-          <div className="container-custom">
-            <div className="text-center">Loading blog posts...</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <Navbar activeSection={activeSection} />
-        <div className="pt-24 pb-20">
-          <div className="container-custom">
-            <div className="text-center text-red-600">Error loading blog posts.</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const [activeSection] = useState("");
+  const posts = blogPosts;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -98,9 +63,9 @@ const Blog: React.FC = () => {
 
       {/* Blog Posts */}
       <div className="container-custom py-16">
-        {data?.posts && data.posts.length > 0 ? (
+        {posts.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {data.posts.map((post) => (
+            {posts.map((post) => (
               <Card key={post.id} className="hover:shadow-lg transition-shadow overflow-hidden">
                 {/* Card image */}
                 <div className="w-full h-48 overflow-hidden">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
+import { submitToFormspree } from "@/lib/formspree";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
   
   const newsletterMutation = useMutation({
     mutationFn: async (email: string) => {
-      return await apiRequest("POST", "/api/newsletter", { email });
+      await submitToFormspree({ email }, "Fripse newsletter signup");
     },
     onSuccess: () => {
       setEmail("");

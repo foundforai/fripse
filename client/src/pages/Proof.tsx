@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Star, ArrowRight, Clock, DollarSign, Users, TrendingUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AdminLink from "@/components/AdminLink";
 
 const Proof: React.FC = () => {
   return (
@@ -319,7 +318,6 @@ const Proof: React.FC = () => {
       </section>
       
       <Footer />
-      <AdminLink />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
+import { submitToFormspree } from "@/lib/formspree";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
@@ -12,7 +12,7 @@ const LeadMagnet: React.FC = () => {
   
   const leadMagnetMutation = useMutation({
     mutationFn: async (email: string) => {
-      return await apiRequest("POST", "/api/lead-magnet", { email });
+      await submitToFormspree({ email }, "Fripse playbook download");
     },
     onSuccess: () => {
       setEmail("");

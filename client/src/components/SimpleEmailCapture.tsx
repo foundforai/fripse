@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Download, CheckCircle, Loader2 } from "lucide-react";
+import { submitToFormspree } from "@/lib/formspree";
 
 interface SimpleEmailCaptureProps {
   className?: string;
@@ -26,26 +27,9 @@ export default function SimpleEmailCapture({ className = "" }: SimpleEmailCaptur
     }
 
     try {
-      const response = await fetch("/api/submit-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      
-      if (result.success) {
-        setIsSuccess(true);
-        setEmail("");
-      } else {
-        throw new Error(result.message || "Failed to submit email");
-      }
+      await submitToFormspree({ email }, "Fripse AI checklist download");
+      setIsSuccess(true);
+      setEmail("");
     } catch (error) {
       console.error("Email submission error:", error);
       setError("Failed to submit email. Please try again.");
