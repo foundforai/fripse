@@ -1,0 +1,33 @@
+# Fripse AI
+
+> Fripse AI helps small businesses work smarter with automation. We design and implement real-world AI systems that eliminate repetitive tasks, improve client communication, and boost profitability — bringing enterprise-level efficiency to everyday businesses without the complexity or cost. Based in the Salt Lake City area, serving Utah and remote.
+
+Fripse AI is an AI consulting and implementation practice for professional service businesses, home service companies, and small businesses. The work is assessment-first: every engagement starts by mapping current workflows to find where AI can save time and make money, then builds the automations that prove it.
+
+## Services
+
+- **AI Automation Strategy** — We map current workflows and identify the highest-leverage places to apply AI.
+- **Workflow Optimization** — We rebuild repetitive admin and operations work as automations your team can run day to day.
+- **Client Communication Systems** — Automated follow-up, scheduling, reminders, and FAQ-style assistants tuned to your business voice.
+- **CRM and Software Integrations** — Connect the tools you already use so data flows automatically.
+
+## Engagement Tiers
+
+- **2 Hour AI Business Checkup** — A fast audit for owners and small teams. You leave with 3 to 5 concrete ways to save time or increase revenue.
+- **1 Day AI Deep Dive** — For teams of 5 to 15. We map workflows, find bottlenecks, and deliver a custom AI playbook your team can use immediately.
+
+## Founder
+
+Fripse AI was founded by Dustin Crump (Founder & CEO).
+
+## Important pages
+
+- [Home](https://fripse.com/): Overview of Fripse AI's assessment-first approach to business AI consulting.
+- [About](https://fripse.com/about): Company background and Dustin Crump's bio.
+- [Assessment](https://fripse.com/assessment): How the AI Business Assessment works and what's included.
+- [Book a call](https://fripse.com/book): Schedule a free consultation via Google Calendar.
+- [Blog](https://fripse.com/blog): Articles on AI search, GEO, automation, and small-business AI strategy.
+
+## Optional
+
+- [SMS opt-in policy](https://fripse.com/sms-optin): Required disclosure page for SMS communications.
