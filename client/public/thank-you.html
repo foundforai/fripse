@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Thank You, Fripse AI</title>
+
+  <!-- OpenAI Pixel -->
+  <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"FvyC8sYkEZLVqMCim7Ugyg",debug:false});</script>
   <style>
     :root { --ink:#0B1F35; }
     body { color: var(--ink); }
@@ -24,6 +27,12 @@
     const flag = sessionStorage.getItem("fripse_quiz_submitted");
     if (!flag) {
       document.getElementById("fallback").style.display = "block";
+    } else {
+      oaiq("measure", "registration_completed", {
+        type: "customer_action",
+        amount: 0,
+        currency: "USD"
+      });
     }
     sessionStorage.removeItem("fripse_quiz_submitted");
   </script>
