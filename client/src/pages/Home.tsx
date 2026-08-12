@@ -30,7 +30,7 @@ const Home: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
-                href="https://fripse.com/book"
+                href="/book"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
                   </p>
                 </div>
                 <a 
-                  href="https://fripse.com/book"
+                  href="/book"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
                   </p>
                 </div>
                 <a 
-                  href="https://fripse.com/book"
+                  href="/book"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -152,31 +152,28 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Proof Section */}
+      {/* Assessment focus */}
       <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-sm font-medium text-[#007CFF] mb-4 text-center">Recent client wins</h2>
-            
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">What we look for first</h2>
             <div className="space-y-6 mb-8">
               <div className="flex items-start gap-4">
                 <Check className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                 <p className="text-gray-700 leading-relaxed">
-                  Flooring company reduced texting chaos, centralized notes, and captured KPIs with a simple company OS and GPT workflows
+                  Repeated follow-up, status updates, documentation, and other work that keeps landing back on the same person
                 </p>
               </div>
-              
               <div className="flex items-start gap-4">
                 <Check className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
                 <p className="text-gray-700 leading-relaxed">
-                  Project team scaled workload without new hires by automating status updates, follow ups, and documentation
+                  Information that gets scattered across texts, spreadsheets, inboxes, and disconnected business tools
                 </p>
               </div>
             </div>
-            
             <div className="bg-[#007CFF]/10 border border-[#007CFF]/20 rounded-lg p-6 text-center">
               <p className="text-gray-800 font-medium">
-                Want the details? Ask for the Sparkle OS case summary on our call
+                The assessment ends with a practical roadmap, not a generic software pitch.
               </p>
             </div>
           </div>
@@ -205,7 +202,7 @@ const Home: React.FC = () => {
             </div>
             
             <a 
-              href="https://fripse.com/book"
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -253,7 +250,7 @@ const Home: React.FC = () => {
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">How fast can we see results?</h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Most clients see time savings within one to two weeks for admin and communication use cases
+                  For admin and communication use cases, clients commonly see time savings within one to two weeks after implementation
                 </p>
               </div>
               
@@ -284,7 +281,7 @@ const Home: React.FC = () => {
             </h2>
             
             <a 
-              href="https://fripse.com/book"
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
             >

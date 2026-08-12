@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
                   <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
                 </li>
                 <li>
-                  <Link href="/proof" className="text-gray-400 hover:text-white transition-colors">Success Stories</Link>
+                  <Link href="/proof" className="text-gray-400 hover:text-white transition-colors">What you receive</Link>
                 </li>
                 <li>
                   <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</Link>
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                     className="bg-[#007CFF] hover:bg-[#0066CC] text-white font-medium"
                   >
                     <a 
-                      href="https://fripse.com/book"
+                      href="/book"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

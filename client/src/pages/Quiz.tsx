@@ -225,7 +225,7 @@ const Quiz: React.FC = () => {
                   data-testid="button-book-after-quiz"
                 >
                   <a 
-                    href="https://fripse.com/book"
+                    href="/book"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

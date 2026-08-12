@@ -1,29 +1,10 @@
-# https://fripse.com/robots.txt
-#
-# Policy: maximize discoverability. We allow all crawlers that surface
-# Fripse AI in search results, AI answers, or future AI training data.
-
-# Default: everything allowed
 User-agent: *
 Allow: /
 
-# --- Search engines ---
-User-agent: Googlebot
-Allow: /
+Sitemap: https://fripseai.com/sitemap.xml
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-# --- AI search / real-time retrieval bots (cite us in AI answers) ---
+# Public pages may be retrieved by search and answer engines. This does not grant
+# permission to submit forms or automate other write actions.
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -48,19 +29,6 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-User-agent: meta-externalagent
-Allow: /
-
-User-agent: meta-externalfetcher
-Allow: /
-
-User-agent: mistralai-User
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-# --- AI training bots (feed future model knowledge) ---
 User-agent: GPTBot
 Allow: /
 
@@ -70,10 +38,20 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: meta-externalfetcher
+Allow: /
+
+User-agent: mistralai-User
+Allow: /
+
 User-agent: Bytespider
 Allow: /
 
 User-agent: Diffbot
 Allow: /
-
-Sitemap: https://fripse.com/sitemap.xml

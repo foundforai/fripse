@@ -115,7 +115,7 @@ Think about it this way: saving 10 hours a week isn't just saving time. It's add
 
 Stop letting the busywork run your business. Let AI do the heavy lifting.
 
-**👉 [Book a Free Strategy Call with Fripse AI](https://fripse.com/book) and see how much time (and money) we can save you this month.**`,
+**👉 [Book a Free Strategy Call with Fripse AI](https://fripseai.com/book/) and see how much time (and money) we can save you this month.**`,
   },
   {
     id: 8,

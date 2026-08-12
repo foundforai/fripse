@@ -1,33 +1,36 @@
 # Fripse AI
 
-> Fripse AI helps small businesses work smarter with automation. We design and implement real-world AI systems that eliminate repetitive tasks, improve client communication, and boost profitability — bringing enterprise-level efficiency to everyday businesses without the complexity or cost. Based in the Salt Lake City area, serving Utah and remote.
+> Fripse AI is a Utah-based AI business assessment and workflow automation consultancy. It works with small businesses, professional services firms, home-service companies, and field-based teams in Utah and remotely.
 
-Fripse AI is an AI consulting and implementation practice for professional service businesses, home service companies, and small businesses. The work is assessment-first: every engagement starts by mapping current workflows to find where AI can save time and make money, then builds the automations that prove it.
+## What Fripse AI does
+
+Fripse starts with a business assessment: interviews and workflow mapping to identify repetitive work, bottlenecks, communication gaps, and practical automation opportunities. The result is a prioritized roadmap. Implementation and team training are available after the assessment.
 
 ## Services
 
-- **AI Automation Strategy** — We map current workflows and identify the highest-leverage places to apply AI.
-- **Workflow Optimization** — We rebuild repetitive admin and operations work as automations your team can run day to day.
-- **Client Communication Systems** — Automated follow-up, scheduling, reminders, and FAQ-style assistants tuned to your business voice.
-- **CRM and Software Integrations** — Connect the tools you already use so data flows automatically.
+- **2 Hour AI Business Checkup**: A focused working session for owners and small teams. It identifies three to five practical opportunities to reduce repetitive work.
+- **1 Day AI Deep Dive**: A full-day workflow assessment for teams of roughly five to fifteen people. It produces a prioritized AI playbook, workflow maps, and implementation guidance.
+- **AI workflow automation**: Automation for recurring administrative work, follow-up, scheduling, client communication, reporting, and connected business tools.
+- **AI readiness quiz**: A short self-assessment for business owners who want a starting point.
 
-## Engagement Tiers
+## Who it is for
 
-- **2 Hour AI Business Checkup** — A fast audit for owners and small teams. You leave with 3 to 5 concrete ways to save time or increase revenue.
-- **1 Day AI Deep Dive** — For teams of 5 to 15. We map workflows, find bottlenecks, and deliver a custom AI playbook your team can use immediately.
+Fripse AI works with small businesses that rely on scattered text threads, spreadsheets, repeatable administrative work, or disconnected business tools. Common audiences include contractors, home-service companies, professional services firms, and other service businesses.
 
 ## Founder
 
-Fripse AI was founded by Dustin Crump (Founder & CEO).
+Fripse AI was founded by Dustin Crump.
 
-## Important pages
+## Contact and next step
 
-- [Home](https://fripse.com/): Overview of Fripse AI's assessment-first approach to business AI consulting.
-- [About](https://fripse.com/about): Company background and Dustin Crump's bio.
-- [Assessment](https://fripse.com/assessment): How the AI Business Assessment works and what's included.
-- [Book a call](https://fripse.com/book): Schedule a free consultation via Google Calendar.
-- [Blog](https://fripse.com/blog): Articles on AI search, GEO, automation, and small-business AI strategy.
+- Book a call: https://fripseai.com/book/
+- AI Business Assessment: https://fripseai.com/assessment/
+- AI readiness quiz: https://fripseai.com/quiz/
+- About Fripse AI: https://fripseai.com/about/
+- Email: info@fripse.com
 
-## Optional
+## Important notes
 
-- [SMS opt-in policy](https://fripse.com/sms-optin): Required disclosure page for SMS communications.
+- Fripse AI does not promise specific rankings, citations, recommendations, cost savings, or revenue results.
+- Any automation scope is determined after reviewing the business workflow and its systems.
+- Public site forms are for contact requests and require an explicit visitor submission.

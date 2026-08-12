@@ -20,7 +20,10 @@ export default function Seo({
   jsonLd,
   noindex = false,
 }: SeoProps) {
-  const url = path.startsWith("http") ? path : `${SITE}${path}`;
+  const normalizedPath = path === "/" ? "/" : `/${path.replace(/^\/+|\/+$/g, "")}/`;
+  const url = path.startsWith("http")
+    ? path.endsWith("/") ? path : `${path}/`
+    : `${SITE}${normalizedPath}`;
   const ldArray = jsonLd
     ? Array.isArray(jsonLd)
       ? jsonLd

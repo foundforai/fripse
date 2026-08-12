@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               Blog
             </Link>
             <a 
-              href="https://fripse.com/book"
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -156,7 +156,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               Blog
             </Link>
             <a 
-              href="https://fripse.com/book"
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
             >

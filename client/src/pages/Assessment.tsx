@@ -47,7 +47,7 @@ const Assessment: React.FC = () => {
               data-testid="button-book-assessment-hero"
             >
               <a 
-                href="https://fripse.com/book"
+                href="/book"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -128,7 +128,7 @@ const Assessment: React.FC = () => {
                   data-testid="button-book-checkup-detailed"
                 >
                   <a 
-                    href="https://fripse.com/book"
+                    href="/book"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -201,7 +201,7 @@ const Assessment: React.FC = () => {
                   data-testid="button-book-deep-dive-detailed"
                 >
                   <a 
-                    href="https://fripse.com/book"
+                    href="/book"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -261,7 +261,7 @@ const Assessment: React.FC = () => {
               data-testid="button-book-assessment-final"
             >
               <a 
-                href="https://fripse.com/book"
+                href="/book"
                 target="_blank"
                 rel="noopener noreferrer"
               >

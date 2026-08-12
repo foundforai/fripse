@@ -1,6 +1,6 @@
 import type { BlogPost } from "@/data/blogPosts";
 
-export const SITE = "https://fripse.com";
+export const SITE = "https://fripseai.com";
 export const ORG_ID = `${SITE}/#org`;
 export const WEBSITE_ID = `${SITE}/#website`;
 export const FOUNDER_ID = `${SITE}/#founder`;
@@ -9,11 +9,11 @@ export const SERVICE_ID = `${SITE}/#service-assessment`;
 export const ORG_NAME = "Fripse AI";
 export const ORG_LOGO = `${SITE}/og-image.png`;
 export const FOUNDER_NAME = "Dustin Crump";
-export const FOUNDER_TITLE = "Founder & CEO";
+export const FOUNDER_TITLE = "Founder";
 export const DEFAULT_OG_IMAGE = `${SITE}/og-image.png`;
 
 const ORG_DESCRIPTION =
-  "AI business assessment and consulting for professional services and small businesses in the Salt Lake City area. We help you identify where AI saves time and makes money in your workflows.";
+  "Fripse AI provides AI business assessments and workflow automation consulting for small businesses in Utah and remotely.";
 
 export interface BreadcrumbItem {
   name: string;
@@ -54,13 +54,7 @@ export function organizationNode() {
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-        ],
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         opens: "09:00",
         closes: "18:00",
       },
@@ -79,7 +73,7 @@ export function organizationNode() {
           "@type": "Offer",
           name: "2 Hour AI Business Checkup",
           description:
-            "A fast audit for owners and small teams. You leave with 3 to 5 concrete ways to save time or increase revenue.",
+            "A working session for owners and small teams that identifies practical places to reduce repetitive work.",
           itemOffered: {
             "@type": "Service",
             serviceType: "AI Business Assessment",
@@ -89,7 +83,7 @@ export function organizationNode() {
           "@type": "Offer",
           name: "1 Day AI Deep Dive",
           description:
-            "For teams of 5 to 15. We map workflows, find bottlenecks, and deliver a custom AI playbook your team can use immediately.",
+            "A full-day workflow assessment that produces a prioritized AI playbook for the team.",
           itemOffered: {
             "@type": "Service",
             serviceType: "Comprehensive AI Business Assessment",
@@ -129,9 +123,9 @@ export function serviceNode() {
     name: "AI Business Assessment",
     serviceType: "AI Business Assessment",
     description:
-      "Professional AI business assessment that maps where AI saves time and makes money in your workflows.",
+      "An assessment that maps current workflows and identifies practical AI automation opportunities.",
     provider: { "@id": ORG_ID },
-    areaServed: { "@type": "AdministrativeArea", name: "Salt Lake County" },
+    areaServed: { "@type": "AdministrativeArea", name: "Utah" },
     availableChannel: {
       "@type": "ServiceChannel",
       serviceUrl: `${SITE}/book`,
@@ -174,8 +168,7 @@ export function breadcrumbNode(items: BreadcrumbItem[]) {
 }
 
 export function blogPostingNode(post: BlogPost) {
-  const isFounderAuthored =
-    post.author === FOUNDER_NAME || post.author === "Dustin Crump";
+  const isFounderAuthored = post.author === FOUNDER_NAME || post.author === "Dustin Crump";
   const url = `${SITE}/blog/${post.slug}`;
   return {
     "@type": "BlogPosting",
@@ -185,9 +178,7 @@ export function blogPostingNode(post: BlogPost) {
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     image: DEFAULT_OG_IMAGE,
-    author: isFounderAuthored
-      ? { "@id": FOUNDER_ID }
-      : { "@id": ORG_ID },
+    author: isFounderAuthored ? { "@id": FOUNDER_ID } : { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
@@ -207,7 +198,7 @@ export function homepageGraph() {
         url: `${SITE}/`,
         name: "AI Business Assessment for Utah Small Businesses | Fripse AI",
         description:
-          "Not sure how AI fits your business? Start with an AI Business Assessment that maps where AI saves time and makes money in your workflows.",
+          "Not sure how AI fits your business? Start with an AI Business Assessment that maps where AI can help in your workflows.",
       }),
       breadcrumbNode([{ name: "Home", url: `${SITE}/` }]),
       {
@@ -215,18 +206,26 @@ export function homepageGraph() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "Do you serve contractors in Cottonwood Heights and Sandy?",
+            name: "How fast can we see results?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, we serve the entire Salt Lake Valley, including Cottonwood Heights, Sandy, Draper, Murray, and nearby.",
+              text: "For admin and communication use cases, clients commonly see time savings within one to two weeks after implementation.",
             },
           },
           {
             "@type": "Question",
-            name: "How fast can we see results?",
+            name: "Do you only work with contractors?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Most clients see tangible time savings within 2 to 4 weeks, often within the first week for admin automations.",
+              text: "No. Fripse AI works with professional and service businesses across the Salt Lake Valley, including contractors, tax and accounting firms, and home services businesses.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What do the sessions include?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Sessions include interviews, workflow mapping, prompt design, a prioritized roadmap, and optional team training.",
             },
           },
         ],
