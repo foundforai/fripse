@@ -1,9 +1,15 @@
+interface Env {
+  ASSETS: {
+    fetch(request: Request): Promise<Response>;
+  };
+}
+
 export default {
-  async fetch(request: Request, env: { ASSETS: Fetcher }): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.hostname === "www.fripse.com") {
-      url.hostname = "fripse.com";
+    if (url.hostname !== "fripseai.com") {
+      url.hostname = "fripseai.com";
       return Response.redirect(url.toString(), 301);
     }
 
