@@ -1,10 +1,10 @@
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mpqwvlnz";
+const LEAD_ENDPOINT = "/api/lead";
 
 export async function submitToFormspree(
   data: Record<string, unknown>,
   subject: string,
 ): Promise<void> {
-  const res = await fetch(FORMSPREE_ENDPOINT, {
+  const res = await fetch(LEAD_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
