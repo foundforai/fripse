@@ -11,6 +11,83 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 11,
+    title: "How to Build an Internal Company AI That Only Knows Your Handbook",
+    slug: "internal-company-ai-assistant-handbook-cloudflare-ai-search",
+    excerpt:
+      "Your team asks the same questions every week. Here's how an internal AI can answer them from your own handbook, say when it doesn't know, and check itself.",
+    author: "Dustin Crump",
+    publishedAt: "2026-10-01T18:00:00.000Z",
+    updatedAt: "2026-10-01T18:00:00.000Z",
+    content: `Every business has the same handful of questions that come up over and over. How many PTO days do I get after two years? What's our return policy on custom orders? Where's the form for mileage?
+
+The answers are usually written down somewhere. A handbook. A policy PDF. An SOP somebody typed up a few years ago and then scanned. The problem is nobody can find them, so they ask the office manager. Again.
+
+An internal company AI fixes that. Not a chatbot that knows the whole internet. An assistant that only knows your stuff.
+
+## What It Actually Does
+
+A staff member types a normal question, the way they'd ask a coworker. The system looks through your company's documents and finds the few passages that match. It hands only those passages to the AI, and the AI writes a short answer with a link to the source, so anyone can click through and read the real policy.
+
+That's the whole idea. The system pulls your docs first, then the AI answers from them, instead of answering from memory.
+
+## Why Now: Cloudflare AI Search Is Ready
+
+As of October 1, 2026, Cloudflare's AI Search is generally available. That means it's out of testing and ready for real work. It's fully managed: you drop your files in, and it handles the indexing (building a searchable map of your documents) and the searching.
+
+When someone asks a question, it runs two searches at the same time. One matches by meaning, so "time off" finds "PTO." The other matches exact words, like a form number or a product code. It blends the results, can re-sort them so the best ones float to the top, then either hands back the top passages or passes them to an AI model to write the answer.
+
+A few new pieces matter for small businesses:
+
+- **Scanned PDFs work now.** Turn on OCR (software that reads the text off a picture of a page) and those old scanned policies become searchable.
+- **Bigger files.** Up to 10 MB per file, up from 4 MB.
+- **Pictures.** It can search images directly, not just a caption describing them. Handy for equipment photos or diagrams inside an SOP.
+
+The cost is easy to figure out. Billing starts November 1, 2026, and every Cloudflare Workers plan includes a free monthly allotment: 5 million ingestion tokens (tokens are small chunks of text, so this is roughly how much text you load in), 10 GB of storage, 1,000 meaning-based searches, and 1,000 keyword searches. Past that, it's $0.75 per million tokens loaded (plus $0.50 per million for image processing), $2 per GB per month to store, $0.75 per 1,000 meaning-based searches, and $0.10 per 1,000 keyword searches. Cloudflare says small projects fit inside the free allotment.
+
+## The Honest Part: It Can Still Get Things Wrong
+
+Handing the AI only your docs cuts down on hallucinations (when an AI confidently makes something up) a lot. Not to zero. Here's how it still slips:
+
+- **Nothing relevant exists, and it guesses anyway.** Ask about a policy you never wrote down, and it may fill the gap.
+- **It pulls an outdated doc.** If last year's PTO policy and this year's are both in there, it might quote the wrong one.
+- **It summarizes loosely.** "Up to 10 days" turns into "10 days."
+
+The basic fixes are boring, but they work. Clean up your docs so only current versions are in there. Tell the AI to answer only from the documents. Always show the source.
+
+## Adding a Referee: TypeSafe's Jev
+
+That gets you most of the way. For the rest, we add Jev, a model from a company called TypeSafe.
+
+Jev isn't a chatbot. It doesn't write answers. It makes fast, narrow calls: pick one of these options, yes or no, rate this on a scale. Each call comes back with a probability attached, so your system knows how sure it is and can decide what happens next. That makes it a good referee, and it sits around the assistant at three points.
+
+**Before the search.** Jev reads the question and routes it: HR, IT, safety, or operations. It also flags topics the bot shouldn't touch, like someone's pay or a legal dispute, and sends those straight to a person.
+
+**After the search.** Jev re-sorts the passages that came back and judges whether they actually answer the question. If they don't, the bot doesn't guess. It says, "I couldn't find that. Check with HR."
+
+**After the answer.** Before anyone sees it, each claim gets checked against the passage it came from. Does the source back it up, contradict it, or not say anything about it? If a claim fails, or the check isn't confident, the question goes to a person instead.
+
+So the pitch is simple: an assistant that only knows your handbook, says when it doesn't know, and checks itself.
+
+## Where the Real Work Is
+
+Here's what surprises people. The Cloudflare part is the easy part. It's mostly loading files and turning on the right settings.
+
+Most of the work is:
+
+- **Cleaning up your docs.** Finding the current version of each policy, tossing the old ones, and filling the obvious gaps.
+- **Setting the guardrails.** Which topics go straight to a person? Who gets those hand-offs? What should the bot say when it doesn't know?
+- **Testing with real questions.** Pull the questions your team actually asks and see how it does before you roll it out to everyone.
+
+That's do-the-job work, and it's what we do at Fripse AI for Utah businesses every day. We'd rather take the time to get your docs right than ship a bot your team stops trusting after one bad answer.
+
+## Want a Second Set of Eyes?
+
+If you've got a handbook, a pile of SOPs, and an office manager who's tired of answering the same questions, let's talk. We'll take a free look at your docs and tell you straight whether an internal AI makes sense for your team yet.
+
+[Book a free call with Dustin](/booking)`,
+  },
+  {
     id: 10,
     title: "How to Prepare Your Website for the Age of AI Search",
     slug: "how-to-prepare-website-age-ai-search",
