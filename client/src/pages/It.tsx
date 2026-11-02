@@ -190,7 +190,7 @@ export default function It() {
               className={bookButtonClass("text-xl px-12 py-6")}
             >
               <a href={BOOKING_HREF}>
-                Book a 20-minute call
+                Book a 30-minute call
                 <ArrowRight className="ml-3 h-6 w-6" />
               </a>
             </Button>
@@ -266,7 +266,7 @@ export default function It() {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center bg-white rounded-lg p-10 md:p-12 border border-gray-200">
             <h2 id="cta-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              A 20-minute call
+              A 30-minute call
             </h2>
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
               I'll ask about your tools and hiring plan and tell you what to fix first, whether or not you hire us.
@@ -277,7 +277,7 @@ export default function It() {
               className={bookButtonClass("text-xl px-12 py-6")}
             >
               <a href={BOOKING_HREF}>
-                Book a 20-minute call
+                Book a 30-minute call
                 <ArrowRight className="ml-3 h-6 w-6" />
               </a>
             </Button>
