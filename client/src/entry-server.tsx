@@ -29,5 +29,6 @@ export const ROUTES: string[] = [
   "/blog",
   ...blogPosts.map((p) => `/blog/${p.slug}`),
   "/sms-optin",
+  "/it",
   "/lead-capture-demo",
 ];

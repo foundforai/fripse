@@ -15,6 +15,7 @@ import Quiz from "@/pages/Quiz";
 import Booking from "@/pages/Booking";
 import LeadCaptureDemo from "@/pages/LeadCaptureDemo";
 import SmsOptIn from "@/pages/SmsOptIn";
+import It from "@/pages/It";
 
 function Routes() {
   return (
@@ -30,6 +31,7 @@ function Routes() {
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/lead-capture-demo" component={LeadCaptureDemo} />
       <Route path="/sms-optin" component={SmsOptIn} />
+      <Route path="/it" component={It} />
       <Route path="/404" component={NotFoundPage} />
       <Route component={NotFound} />
     </Switch>

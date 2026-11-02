@@ -3,7 +3,11 @@ import { Linkedin, Twitter, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  showPartnerLink?: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ showPartnerLink = true }) => {
   // Handle smooth scrolling to different sections
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -62,6 +66,9 @@ const Footer: React.FC = () => {
                 <li>
                   <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</Link>
                 </li>
+                <li>
+                  <Link href="/it" className="text-gray-400 hover:text-white transition-colors">IT for startups</Link>
+                </li>
               </ul>
             </div>
             
@@ -104,9 +111,11 @@ const Footer: React.FC = () => {
         
         <div className="border-t border-gray-800 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-500 mb-4 md:mb-0">
-            <p className="text-sm mb-2">
-              Need AI SEO readiness? Visit <a href="https://foundforai.com" target="_blank" rel="noopener" className="text-gray-400 hover:text-white transition-colors underline">Found For AI</a>.
-            </p>
+            {showPartnerLink && (
+              <p className="text-sm mb-2">
+                Need AI SEO readiness? Visit <a href="https://foundforai.com" target="_blank" rel="noopener" className="text-gray-400 hover:text-white transition-colors underline">Found For AI</a>.
+              </p>
+            )}
             &copy; {new Date().getFullYear()} Fripse. All rights reserved.
           </div>
           
