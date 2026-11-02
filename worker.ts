@@ -20,6 +20,7 @@ type FormField = string | number;
 
 const RECIPIENT = "info@fripse.com";
 const SENDER = "forms@fripseai.com";
+const CANONICAL_HOST = "fripseai.com";
 const MAX_FIELD_LENGTH = 2_000;
 const MAX_FIELDS = 12;
 const ALLOWED_FIELDS = new Set([
@@ -128,11 +129,24 @@ export default {
       return handleLead(request, env);
     }
 
-    if (url.hostname !== "fripseai.com") {
-      url.hostname = "fripseai.com";
+    // Public aliases 301 to fripseai.com. Workers preview hosts stay on
+    // their own URL so a branch build can be reviewed, and they are noindex.
+    if (url.hostname !== CANONICAL_HOST && !url.hostname.endsWith(".workers.dev")) {
+      url.hostname = CANONICAL_HOST;
       return Response.redirect(url.toString(), 301);
     }
 
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+    if (url.hostname === CANONICAL_HOST) {
+      return response;
+    }
+
+    const headers = new Headers(response.headers);
+    headers.set("X-Robots-Tag", "noindex, nofollow");
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
   },
 };
