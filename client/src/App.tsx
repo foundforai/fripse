@@ -16,12 +16,14 @@ import Booking from "@/pages/Booking";
 import LeadCaptureDemo from "@/pages/LeadCaptureDemo";
 import SmsOptIn from "@/pages/SmsOptIn";
 import It from "@/pages/It";
+import Community from "@/pages/Community";
 
 function Routes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
+      <Route path="/community" component={Community} />
       <Route path="/assessment" component={Assessment} />
       <Route path="/proof" component={Proof} />
       <Route path="/quiz" component={Quiz} />

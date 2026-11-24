@@ -21,6 +21,7 @@ export function render(path: string): RenderResult {
 export const ROUTES: string[] = [
   "/",
   "/about",
+  "/community",
   "/assessment",
   "/proof",
   "/quiz",

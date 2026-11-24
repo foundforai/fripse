@@ -27,6 +27,7 @@ Fripse AI was founded by Dustin Crump.
 - AI Business Assessment: https://fripseai.com/assessment/
 - AI readiness quiz: https://fripseai.com/quiz/
 - About Fripse AI: https://fripseai.com/about/
+- Community workshops: https://fripseai.com/community/
 - Email: info@fripse.com
 
 ## Important notes

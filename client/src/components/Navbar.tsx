@@ -78,6 +78,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               Proof
             </Link>
             <Link 
+              href="/community" 
+              className="text-gray-700 hover:text-secondary font-medium transition-colors"
+            >
+              Community
+            </Link>
+            <Link 
               href="/about" 
               className="text-gray-700 hover:text-secondary font-medium transition-colors"
             >
@@ -140,6 +146,13 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               onClick={() => setMobileMenuOpen(false)}
             >
               Proof
+            </Link>
+            <Link 
+              href="/community" 
+              className="block text-gray-700 hover:text-secondary font-medium py-2 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Community
             </Link>
             <Link 
               href="/about" 

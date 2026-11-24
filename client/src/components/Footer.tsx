@@ -61,6 +61,9 @@ const Footer: React.FC<FooterProps> = ({ showPartnerLink = true }) => {
                   <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
                 </li>
                 <li>
+                  <Link href="/community" className="text-gray-400 hover:text-white transition-colors">Community</Link>
+                </li>
+                <li>
                   <Link href="/proof" className="text-gray-400 hover:text-white transition-colors">What you receive</Link>
                 </li>
                 <li>
