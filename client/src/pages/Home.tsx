@@ -104,18 +104,23 @@ const Home: React.FC = () => {
         <div className="container-custom">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-lg border">
+              <div className="bg-white p-8 rounded-lg shadow-lg border h-full flex flex-col">
                 <div className="mb-6">
                   <Clock className="w-8 h-8 text-[#007CFF] mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">2 Hour AI Business Checkup</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">2 Hour AI Business Checkup</h3>
+                  <p className="text-xl font-semibold text-[#007CFF] mb-4">$750</p>
                   <p className="text-gray-700 leading-relaxed">
                     A fast audit for owners and small teams. You leave with 3 to 5 concrete ways to save time or increase revenue
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mt-3">
+                    This $750 is credited toward an implementation project if you sign within 30 days.
                   </p>
                 </div>
                 <a 
                   href="/book"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="mt-auto block w-full"
                 >
                   <Button 
                     className="w-full bg-[#007CFF] hover:bg-[#0066CC] text-white font-semibold"
@@ -126,10 +131,11 @@ const Home: React.FC = () => {
                 </a>
               </div>
               
-              <div className="bg-white p-8 rounded-lg shadow-lg border">
+              <div className="bg-white p-8 rounded-lg shadow-lg border h-full flex flex-col">
                 <div className="mb-6">
                   <Target className="w-8 h-8 text-[#007CFF] mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">1 Day AI Deep Dive</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">1 Day AI Deep Dive</h3>
+                  <p className="text-xl font-semibold text-[#007CFF] mb-4">$2,500</p>
                   <p className="text-gray-700 leading-relaxed">
                     For teams of 5 to 15. We map workflows, find bottlenecks, and deliver a custom AI playbook your team can use immediately
                   </p>
@@ -138,6 +144,7 @@ const Home: React.FC = () => {
                   href="/book"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="mt-auto block w-full"
                 >
                   <Button 
                     className="w-full bg-[#007CFF] hover:bg-[#0066CC] text-white font-semibold"

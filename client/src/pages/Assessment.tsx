@@ -69,11 +69,15 @@ const Assessment: React.FC = () => {
             
             <div className="grid lg:grid-cols-2 gap-12">
               {/* 2 Hour Checkup */}
-              <div className="bg-gray-50 p-8 rounded-lg border-2 border-gray-200">
+              <div className="bg-gray-50 p-8 rounded-lg border-2 border-gray-200 h-full flex flex-col">
                 <div className="mb-8">
                   <Clock className="w-12 h-12 text-[#007CFF] mb-6" />
-                  <h3 className="text-3xl font-bold text-gray-900 mb-6">2 Hour AI Business Checkup</h3>
-                  <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-3">2 Hour AI Business Checkup</h3>
+                  <p className="text-xl font-semibold text-[#007CFF] mb-2">$750</p>
+                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    This $750 is credited toward an implementation project if you sign within 30 days.
+                  </p>
+                  <p className="text-xl text-gray-700 leading-relaxed">
                     A fast audit for owners and small teams. You leave with 3 to 5 concrete ways to save time or increase revenue
                   </p>
                 </div>
@@ -124,7 +128,7 @@ const Assessment: React.FC = () => {
 
                 <Button 
                   asChild
-                  className="w-full bg-[#007CFF] hover:bg-[#0066CC] text-white font-semibold text-lg py-6"
+                  className="w-full bg-[#007CFF] hover:bg-[#0066CC] text-white font-semibold text-lg py-6 mt-auto"
                   data-testid="button-book-checkup-detailed"
                 >
                   <a 
@@ -138,11 +142,12 @@ const Assessment: React.FC = () => {
               </div>
               
               {/* 1 Day Deep Dive */}
-              <div className="bg-[#007CFF]/5 p-8 rounded-lg border-2 border-[#007CFF]">
+              <div className="bg-[#007CFF]/5 p-8 rounded-lg border-2 border-[#007CFF] h-full flex flex-col">
                 <div className="mb-8">
                   <Target className="w-12 h-12 text-[#007CFF] mb-6" />
-                  <h3 className="text-3xl font-bold text-gray-900 mb-6">1 Day AI Deep Dive</h3>
-                  <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-3">1 Day AI Deep Dive</h3>
+                  <p className="text-xl font-semibold text-[#007CFF] mb-6">$2,500</p>
+                  <p className="text-xl text-gray-700 leading-relaxed">
                     For teams of 5 to 15. We map workflows, find bottlenecks, and deliver a custom AI playbook your team can use immediately
                   </p>
                 </div>
@@ -197,7 +202,7 @@ const Assessment: React.FC = () => {
 
                 <Button 
                   asChild
-                  className="w-full bg-[#007CFF] hover:bg-[#0066CC] text-white font-semibold text-lg py-6"
+                  className="w-full bg-[#007CFF] hover:bg-[#0066CC] text-white font-semibold text-lg py-6 mt-auto"
                   data-testid="button-book-deep-dive-detailed"
                 >
                   <a 

@@ -73,7 +73,9 @@ export function organizationNode() {
           "@type": "Offer",
           name: "2 Hour AI Business Checkup",
           description:
-            "A working session for owners and small teams that identifies practical places to reduce repetitive work.",
+            "A working session for owners and small teams that identifies practical places to reduce repetitive work. This $750 is credited toward an implementation project if you sign within 30 days.",
+          price: "750",
+          priceCurrency: "USD",
           itemOffered: {
             "@type": "Service",
             serviceType: "AI Business Assessment",
@@ -84,6 +86,8 @@ export function organizationNode() {
           name: "1 Day AI Deep Dive",
           description:
             "A full-day workflow assessment that produces a prioritized AI playbook for the team.",
+          price: "2500",
+          priceCurrency: "USD",
           itemOffered: {
             "@type": "Service",
             serviceType: "Comprehensive AI Business Assessment",
